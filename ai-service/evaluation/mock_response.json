@@ -1,0 +1,93 @@
+{
+  "generated_at": "2026-08-10T13:25:00.000000+00:00",
+  "data_source": "live",
+  "processed_context": {
+    "latitude": 12.97,
+    "longitude": 77.59,
+    "temperature_c": 28.5,
+    "rainfall_mm": 850.0,
+    "humidity_pct": 65.0,
+    "weather_source": "live",
+    "total_crops_evaluated": 15
+  },
+  "recommendations": [
+    {
+      "crop": "Tomato",
+      "hindi_name": "टमाटर",
+      "score": 85,
+      "risk": 44,
+      "profit_range": {
+        "min": 453600,
+        "max": 680400,
+        "currency": "INR",
+        "yield_per_acre_kg": 12000.0,
+        "base_price_per_kg": 18.0,
+        "msp_per_quintal": null
+      },
+      "components": {
+        "weather_suitability": 50,
+        "soil_compatibility": 100,
+        "water_availability": 85,
+        "market_demand": 100,
+        "price_trend": 100,
+        "seasonal_fit": 100
+      },
+      "reasoning": [
+        "Live weather (28.5°C, 850mm rainfall) matches optimal cultivation conditions for Tomato.",
+        "Your selected soil type (Loamy) is highly compatible (100/100) for growing Tomato.",
+        "Local APMC Mandi demand for Tomato is currently high with upward price momentum.",
+        "Kharif is the primary recommended sowing season for Tomato."
+      ],
+      "confidence": "high",
+      "sowing_window": "June-July",
+      "harvesting_window": "September-October",
+      "irrigation_advisory": "Drip irrigation preferred. Avoid waterlogging — causes root rot.",
+      "major_producing_states": [
+        "Andhra Pradesh",
+        "Karnataka",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Tamil Nadu"
+      ]
+    },
+    {
+      "crop": "Groundnut",
+      "hindi_name": "मूंगफली",
+      "score": 88,
+      "risk": 23,
+      "profit_range": {
+        "min": 65279,
+        "max": 97919,
+        "currency": "INR",
+        "yield_per_acre_kg": 700.0,
+        "base_price_per_kg": 60.15,
+        "msp_per_quintal": 6015.0
+      },
+      "components": {
+        "weather_suitability": 66,
+        "soil_compatibility": 95,
+        "water_availability": 95,
+        "market_demand": 100,
+        "price_trend": 100,
+        "seasonal_fit": 100
+      },
+      "reasoning": [
+        "Live weather (28.5°C, 850mm rainfall) matches optimal cultivation conditions for Groundnut.",
+        "Your selected soil type is highly compatible (95/100) for growing Groundnut.",
+        "Market prices are trending above the Government Minimum Support Price (MSP ₹6015/quintal).",
+        "Kharif is the primary recommended sowing season for Groundnut."
+      ],
+      "confidence": "high",
+      "sowing_window": "June-July",
+      "harvesting_window": "October-November",
+      "irrigation_advisory": "Mostly rainfed in kharif. Needs light irrigation at pegging and pod development.",
+      "major_producing_states": [
+        "Gujarat",
+        "Rajasthan",
+        "Andhra Pradesh",
+        "Tamil Nadu",
+        "Karnataka"
+      ]
+    }
+  ]
+}
