@@ -1,0 +1,1603 @@
+[
+  {
+    "name": "Rice (Paddy)",
+    "hindi_name": "धान",
+    "season": [
+      "kharif"
+    ],
+    "temp_range_c": [
+      20,
+      37
+    ],
+    "rainfall_range_mm": [
+      1000,
+      2000
+    ],
+    "humidity_range_pct": [
+      60,
+      90
+    ],
+    "soil_types": {
+      "alluvial": 100,
+      "clay": 90,
+      "loamy": 80,
+      "black": 70,
+      "red": 40,
+      "sandy": 15,
+      "laterite": 50
+    },
+    "water_requirement": "high",
+    "yield_per_acre_kg": 2400,
+    "base_price_per_kg": 24.41,
+    "msp_per_quintal": 2441,
+    "cost_pct": 35,
+    "growing_duration_days": 120,
+    "major_producing_states": [
+      "West Bengal",
+      "Uttar Pradesh",
+      "Punjab",
+      "Andhra Pradesh",
+      "Tamil Nadu"
+    ],
+    "sowing_months": {
+      "kharif": "June-July"
+    },
+    "harvesting_months": {
+      "kharif": "October-November"
+    },
+    "irrigation_notes": "Requires standing water for 4-6 weeks. Suitable for flood/canal irrigation.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP, common grade"
+  },
+  {
+    "name": "Wheat",
+    "hindi_name": "गेहूं",
+    "season": [
+      "rabi"
+    ],
+    "temp_range_c": [
+      10,
+      25
+    ],
+    "rainfall_range_mm": [
+      400,
+      700
+    ],
+    "humidity_range_pct": [
+      40,
+      65
+    ],
+    "soil_types": {
+      "alluvial": 100,
+      "loamy": 95,
+      "clay": 75,
+      "black": 70,
+      "sandy": 35,
+      "red": 45,
+      "laterite": 30
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 1800,
+    "base_price_per_kg": 25.85,
+    "msp_per_quintal": 2585,
+    "cost_pct": 30,
+    "growing_duration_days": 120,
+    "major_producing_states": [
+      "Uttar Pradesh",
+      "Punjab",
+      "Haryana",
+      "Madhya Pradesh",
+      "Rajasthan"
+    ],
+    "sowing_months": {
+      "rabi": "October-November"
+    },
+    "harvesting_months": {
+      "rabi": "March-April"
+    },
+    "irrigation_notes": "Needs 4-6 irrigations. Critical at CRI, flowering, and grain-filling stages.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Tomato",
+    "hindi_name": "टमाटर",
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "temp_range_c": [
+      18,
+      30
+    ],
+    "rainfall_range_mm": [
+      500,
+      1200
+    ],
+    "humidity_range_pct": [
+      50,
+      80
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 85,
+      "red": 75,
+      "black": 60,
+      "clay": 45,
+      "sandy": 40,
+      "laterite": 55
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 12000,
+    "base_price_per_kg": 19,
+    "msp_per_quintal": null,
+    "cost_pct": 35,
+    "growing_duration_days": 90,
+    "major_producing_states": [
+      "Andhra Pradesh",
+      "Karnataka",
+      "Madhya Pradesh",
+      "Maharashtra",
+      "Tamil Nadu"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "rabi": "October-November"
+    },
+    "harvesting_months": {
+      "kharif": "September-October",
+      "rabi": "February-March"
+    },
+    "irrigation_notes": "Drip irrigation preferred. Avoid waterlogging — causes root rot.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference — highly volatile, refresh from live market feed when available"
+  },
+  {
+    "name": "Onion",
+    "hindi_name": "प्याज",
+    "season": [
+      "kharif",
+      "rabi",
+      "zaid"
+    ],
+    "temp_range_c": [
+      13,
+      27
+    ],
+    "rainfall_range_mm": [
+      500,
+      750
+    ],
+    "humidity_range_pct": [
+      50,
+      70
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 90,
+      "red": 80,
+      "sandy": 65,
+      "black": 50,
+      "clay": 35,
+      "laterite": 55
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 8000,
+    "base_price_per_kg": 19,
+    "msp_per_quintal": null,
+    "cost_pct": 38,
+    "growing_duration_days": 110,
+    "major_producing_states": [
+      "Maharashtra",
+      "Karnataka",
+      "Madhya Pradesh",
+      "Rajasthan",
+      "Gujarat"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "rabi": "November-December",
+      "zaid": "February-March"
+    },
+    "harvesting_months": {
+      "kharif": "October-November",
+      "rabi": "April-May",
+      "zaid": "May-June"
+    },
+    "irrigation_notes": "Light and frequent irrigation. Stop watering 10 days before harvest.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference — highly volatile, refresh from live market feed when available"
+  },
+  {
+    "name": "Potato",
+    "hindi_name": "आलू",
+    "season": [
+      "rabi"
+    ],
+    "temp_range_c": [
+      15,
+      22
+    ],
+    "rainfall_range_mm": [
+      400,
+      600
+    ],
+    "humidity_range_pct": [
+      50,
+      70
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "sandy": 85,
+      "alluvial": 90,
+      "red": 60,
+      "black": 35,
+      "clay": 30,
+      "laterite": 40
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 10000,
+    "base_price_per_kg": 13,
+    "msp_per_quintal": null,
+    "cost_pct": 40,
+    "growing_duration_days": 90,
+    "major_producing_states": [
+      "Uttar Pradesh",
+      "West Bengal",
+      "Bihar",
+      "Gujarat",
+      "Punjab"
+    ],
+    "sowing_months": {
+      "rabi": "October-November"
+    },
+    "harvesting_months": {
+      "rabi": "February-March"
+    },
+    "irrigation_notes": "Needs well-drained soil. Ridge planting recommended with 8-12 irrigations.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference"
+  },
+  {
+    "name": "Cotton",
+    "hindi_name": "कपास",
+    "season": [
+      "kharif"
+    ],
+    "temp_range_c": [
+      21,
+      35
+    ],
+    "rainfall_range_mm": [
+      600,
+      1000
+    ],
+    "humidity_range_pct": [
+      40,
+      65
+    ],
+    "soil_types": {
+      "black": 100,
+      "alluvial": 70,
+      "loamy": 65,
+      "red": 55,
+      "clay": 50,
+      "sandy": 25,
+      "laterite": 30
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 600,
+    "base_price_per_kg": 82.67,
+    "msp_per_quintal": 8267,
+    "cost_pct": 35,
+    "growing_duration_days": 180,
+    "major_producing_states": [
+      "Gujarat",
+      "Maharashtra",
+      "Telangana",
+      "Karnataka",
+      "Madhya Pradesh"
+    ],
+    "sowing_months": {
+      "kharif": "April-June"
+    },
+    "harvesting_months": {
+      "kharif": "October-February"
+    },
+    "irrigation_notes": "Needs 6-8 irrigations. Critical at flowering and boll formation stages.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP, medium staple"
+  },
+  {
+    "name": "Sugarcane",
+    "hindi_name": "गन्ना",
+    "season": [
+      "kharif",
+      "zaid"
+    ],
+    "temp_range_c": [
+      20,
+      38
+    ],
+    "rainfall_range_mm": [
+      1000,
+      2000
+    ],
+    "humidity_range_pct": [
+      60,
+      85
+    ],
+    "soil_types": {
+      "alluvial": 100,
+      "loamy": 90,
+      "black": 80,
+      "clay": 65,
+      "red": 50,
+      "sandy": 30,
+      "laterite": 40
+    },
+    "water_requirement": "high",
+    "yield_per_acre_kg": 30000,
+    "base_price_per_kg": 3.65,
+    "msp_per_quintal": 365,
+    "cost_pct": 32,
+    "growing_duration_days": 365,
+    "major_producing_states": [
+      "Uttar Pradesh",
+      "Maharashtra",
+      "Karnataka",
+      "Tamil Nadu",
+      "Gujarat"
+    ],
+    "sowing_months": {
+      "kharif": "July-August",
+      "zaid": "February-March"
+    },
+    "harvesting_months": {
+      "kharif": "December-March",
+      "zaid": "November-March"
+    },
+    "irrigation_notes": "Water-intensive. Needs 30-40 irrigations over the crop cycle. Furrow irrigation common.",
+    "msp_season": "2026-27",
+    "price_source": "FRP (Fair and Remunerative Price) at 10.25% base recovery, not MSP — mills legally must pay at least this"
+  },
+  {
+    "name": "Soybean",
+    "hindi_name": "सोयाबीन",
+    "season": [
+      "kharif"
+    ],
+    "temp_range_c": [
+      20,
+      32
+    ],
+    "rainfall_range_mm": [
+      600,
+      1000
+    ],
+    "humidity_range_pct": [
+      50,
+      75
+    ],
+    "soil_types": {
+      "black": 100,
+      "loamy": 90,
+      "alluvial": 75,
+      "clay": 65,
+      "red": 55,
+      "sandy": 30,
+      "laterite": 40
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 800,
+    "base_price_per_kg": 57.08,
+    "msp_per_quintal": 5708,
+    "cost_pct": 28,
+    "growing_duration_days": 100,
+    "major_producing_states": [
+      "Madhya Pradesh",
+      "Maharashtra",
+      "Rajasthan",
+      "Karnataka",
+      "Telangana"
+    ],
+    "sowing_months": {
+      "kharif": "June-July"
+    },
+    "harvesting_months": {
+      "kharif": "September-October"
+    },
+    "irrigation_notes": "Mostly rainfed. Supplemental irrigation at pod filling improves yield.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP, yellow soybean"
+  },
+  {
+    "name": "Maize",
+    "hindi_name": "मक्का",
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "temp_range_c": [
+      18,
+      35
+    ],
+    "rainfall_range_mm": [
+      500,
+      1000
+    ],
+    "humidity_range_pct": [
+      50,
+      80
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 90,
+      "red": 70,
+      "black": 65,
+      "sandy": 50,
+      "clay": 45,
+      "laterite": 55
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 2000,
+    "base_price_per_kg": 24.1,
+    "msp_per_quintal": 2410,
+    "cost_pct": 30,
+    "growing_duration_days": 100,
+    "major_producing_states": [
+      "Karnataka",
+      "Madhya Pradesh",
+      "Bihar",
+      "Tamil Nadu",
+      "Andhra Pradesh"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "rabi": "October-November"
+    },
+    "harvesting_months": {
+      "kharif": "September-October",
+      "rabi": "February-March"
+    },
+    "irrigation_notes": "Critical irrigation at tasseling and grain-filling. Needs well-drained soil.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Groundnut",
+    "hindi_name": "मूंगफली",
+    "season": [
+      "kharif",
+      "zaid"
+    ],
+    "temp_range_c": [
+      22,
+      33
+    ],
+    "rainfall_range_mm": [
+      500,
+      750
+    ],
+    "humidity_range_pct": [
+      50,
+      70
+    ],
+    "soil_types": {
+      "sandy": 100,
+      "loamy": 95,
+      "red": 80,
+      "alluvial": 70,
+      "laterite": 55,
+      "black": 35,
+      "clay": 20
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 700,
+    "base_price_per_kg": 75.17,
+    "msp_per_quintal": 7517,
+    "cost_pct": 30,
+    "growing_duration_days": 120,
+    "major_producing_states": [
+      "Gujarat",
+      "Rajasthan",
+      "Andhra Pradesh",
+      "Tamil Nadu",
+      "Karnataka"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "zaid": "January-February"
+    },
+    "harvesting_months": {
+      "kharif": "October-November",
+      "zaid": "May-June"
+    },
+    "irrigation_notes": "Mostly rainfed in kharif. Needs light irrigation at pegging and pod development.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Chilli",
+    "hindi_name": "मिर्च",
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "temp_range_c": [
+      20,
+      33
+    ],
+    "rainfall_range_mm": [
+      500,
+      800
+    ],
+    "humidity_range_pct": [
+      55,
+      75
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "black": 85,
+      "red": 80,
+      "alluvial": 75,
+      "sandy": 50,
+      "clay": 40,
+      "laterite": 55
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 2500,
+    "base_price_per_kg": 55,
+    "msp_per_quintal": null,
+    "cost_pct": 35,
+    "growing_duration_days": 150,
+    "major_producing_states": [
+      "Andhra Pradesh",
+      "Telangana",
+      "Karnataka",
+      "Maharashtra",
+      "Madhya Pradesh"
+    ],
+    "sowing_months": {
+      "kharif": "May-June",
+      "rabi": "September-October"
+    },
+    "harvesting_months": {
+      "kharif": "October-December",
+      "rabi": "February-April"
+    },
+    "irrigation_notes": "Drip irrigation recommended. Sensitive to waterlogging.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference — dry red chilli"
+  },
+  {
+    "name": "Turmeric",
+    "hindi_name": "हल्दी",
+    "season": [
+      "kharif"
+    ],
+    "temp_range_c": [
+      20,
+      35
+    ],
+    "rainfall_range_mm": [
+      800,
+      1500
+    ],
+    "humidity_range_pct": [
+      60,
+      85
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 85,
+      "red": 80,
+      "clay": 60,
+      "black": 55,
+      "sandy": 40,
+      "laterite": 65
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 8000,
+    "base_price_per_kg": 17,
+    "msp_per_quintal": null,
+    "cost_pct": 38,
+    "growing_duration_days": 240,
+    "major_producing_states": [
+      "Telangana",
+      "Andhra Pradesh",
+      "Tamil Nadu",
+      "Karnataka",
+      "Maharashtra"
+    ],
+    "sowing_months": {
+      "kharif": "May-June"
+    },
+    "harvesting_months": {
+      "kharif": "January-March"
+    },
+    "irrigation_notes": "Needs well-drained soil. Raised bed method recommended. 15-20 irrigations.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference — dry turmeric"
+  },
+  {
+    "name": "Mustard",
+    "hindi_name": "सरसों",
+    "season": [
+      "rabi"
+    ],
+    "temp_range_c": [
+      10,
+      25
+    ],
+    "rainfall_range_mm": [
+      250,
+      500
+    ],
+    "humidity_range_pct": [
+      30,
+      55
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 90,
+      "sandy": 75,
+      "clay": 55,
+      "red": 50,
+      "black": 45,
+      "laterite": 35
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 600,
+    "base_price_per_kg": 62.0,
+    "msp_per_quintal": 6200,
+    "cost_pct": 25,
+    "growing_duration_days": 110,
+    "major_producing_states": [
+      "Rajasthan",
+      "Madhya Pradesh",
+      "Haryana",
+      "Uttar Pradesh",
+      "West Bengal"
+    ],
+    "sowing_months": {
+      "rabi": "October-November"
+    },
+    "harvesting_months": {
+      "rabi": "February-March"
+    },
+    "irrigation_notes": "Drought-tolerant. 1-2 irrigations at branching and pod formation stages.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP, rapeseed & mustard"
+  },
+  {
+    "name": "Chickpea (Chana)",
+    "hindi_name": "चना",
+    "season": [
+      "rabi"
+    ],
+    "temp_range_c": [
+      15,
+      30
+    ],
+    "rainfall_range_mm": [
+      400,
+      650
+    ],
+    "humidity_range_pct": [
+      35,
+      55
+    ],
+    "soil_types": {
+      "black": 100,
+      "loamy": 90,
+      "alluvial": 80,
+      "red": 65,
+      "clay": 55,
+      "sandy": 40,
+      "laterite": 35
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 700,
+    "base_price_per_kg": 58.75,
+    "msp_per_quintal": 5875,
+    "cost_pct": 25,
+    "growing_duration_days": 100,
+    "major_producing_states": [
+      "Madhya Pradesh",
+      "Rajasthan",
+      "Maharashtra",
+      "Uttar Pradesh",
+      "Karnataka"
+    ],
+    "sowing_months": {
+      "rabi": "October-November"
+    },
+    "harvesting_months": {
+      "rabi": "February-March"
+    },
+    "irrigation_notes": "Mostly rainfed on residual moisture. 1-2 irrigations if dry spell occurs.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP, gram"
+  },
+  {
+    "name": "Banana",
+    "hindi_name": "केला",
+    "season": [
+      "kharif",
+      "rabi",
+      "zaid"
+    ],
+    "temp_range_c": [
+      22,
+      35
+    ],
+    "rainfall_range_mm": [
+      1000,
+      2000
+    ],
+    "humidity_range_pct": [
+      60,
+      90
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 95,
+      "red": 70,
+      "clay": 55,
+      "black": 60,
+      "sandy": 35,
+      "laterite": 50
+    },
+    "water_requirement": "high",
+    "yield_per_acre_kg": 25000,
+    "base_price_per_kg": 9,
+    "msp_per_quintal": null,
+    "cost_pct": 40,
+    "growing_duration_days": 300,
+    "major_producing_states": [
+      "Tamil Nadu",
+      "Gujarat",
+      "Maharashtra",
+      "Andhra Pradesh",
+      "Karnataka"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "rabi": "October-November",
+      "zaid": "February-March"
+    },
+    "harvesting_months": {
+      "kharif": "March-May",
+      "rabi": "July-September",
+      "zaid": "November-January"
+    },
+    "irrigation_notes": "Needs drip irrigation for best results. 25-30 litres/plant/day during summer.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference"
+  },
+  {
+    "name": "Bajra (Pearl Millet)",
+    "hindi_name": "बाजरा",
+    "season": [
+      "kharif"
+    ],
+    "temp_range_c": [
+      25,
+      35
+    ],
+    "rainfall_range_mm": [
+      400,
+      600
+    ],
+    "humidity_range_pct": [
+      30,
+      60
+    ],
+    "soil_types": {
+      "sandy": 100,
+      "loamy": 85,
+      "red": 70,
+      "alluvial": 60,
+      "black": 45,
+      "clay": 25,
+      "laterite": 35
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 700,
+    "base_price_per_kg": 29.0,
+    "msp_per_quintal": 2900,
+    "cost_pct": 25,
+    "growing_duration_days": 80,
+    "major_producing_states": [
+      "Rajasthan",
+      "Uttar Pradesh",
+      "Haryana",
+      "Gujarat",
+      "Maharashtra"
+    ],
+    "sowing_months": {
+      "kharif": "June-July"
+    },
+    "harvesting_months": {
+      "kharif": "September-October"
+    },
+    "irrigation_notes": "Highly drought-tolerant nutri-cereal. Rainfed cultivation common; 1-2 supplemental irrigations help in dry spells.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Jowar (Sorghum)",
+    "hindi_name": "ज्वार",
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "temp_range_c": [
+      20,
+      33
+    ],
+    "rainfall_range_mm": [
+      400,
+      750
+    ],
+    "humidity_range_pct": [
+      30,
+      60
+    ],
+    "soil_types": {
+      "black": 100,
+      "loamy": 80,
+      "alluvial": 70,
+      "red": 60,
+      "clay": 50,
+      "sandy": 40,
+      "laterite": 30
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 700,
+    "base_price_per_kg": 40.23,
+    "msp_per_quintal": 4023,
+    "cost_pct": 28,
+    "growing_duration_days": 110,
+    "major_producing_states": [
+      "Maharashtra",
+      "Karnataka",
+      "Madhya Pradesh",
+      "Rajasthan",
+      "Telangana"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "rabi": "September-October"
+    },
+    "harvesting_months": {
+      "kharif": "October-November",
+      "rabi": "February-March"
+    },
+    "irrigation_notes": "Drought-resistant nutri-cereal, mostly rainfed. Light irrigation at flowering boosts rabi yield.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP, hybrid jowar"
+  },
+  {
+    "name": "Ragi (Finger Millet)",
+    "hindi_name": "रागी",
+    "season": [
+      "kharif"
+    ],
+    "temp_range_c": [
+      20,
+      30
+    ],
+    "rainfall_range_mm": [
+      500,
+      1000
+    ],
+    "humidity_range_pct": [
+      50,
+      75
+    ],
+    "soil_types": {
+      "red": 100,
+      "loamy": 85,
+      "laterite": 75,
+      "black": 60,
+      "alluvial": 55,
+      "clay": 45,
+      "sandy": 40
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 650,
+    "base_price_per_kg": 52.05,
+    "msp_per_quintal": 5205,
+    "cost_pct": 25,
+    "growing_duration_days": 110,
+    "major_producing_states": [
+      "Karnataka",
+      "Tamil Nadu",
+      "Odisha",
+      "Uttarakhand",
+      "Maharashtra"
+    ],
+    "sowing_months": {
+      "kharif": "June-July"
+    },
+    "harvesting_months": {
+      "kharif": "October-November"
+    },
+    "irrigation_notes": "Hardy, rainfed nutri-cereal (Shree Anna). Tolerates poor soils and dry spells well.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Barley",
+    "hindi_name": "जौ",
+    "season": [
+      "rabi"
+    ],
+    "temp_range_c": [
+      12,
+      25
+    ],
+    "rainfall_range_mm": [
+      300,
+      500
+    ],
+    "humidity_range_pct": [
+      30,
+      55
+    ],
+    "soil_types": {
+      "loamy": 95,
+      "alluvial": 90,
+      "sandy": 70,
+      "clay": 50,
+      "black": 55,
+      "red": 45,
+      "laterite": 30
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 1100,
+    "base_price_per_kg": 21.5,
+    "msp_per_quintal": 2150,
+    "cost_pct": 28,
+    "growing_duration_days": 120,
+    "major_producing_states": [
+      "Rajasthan",
+      "Uttar Pradesh",
+      "Madhya Pradesh",
+      "Haryana",
+      "Punjab"
+    ],
+    "sowing_months": {
+      "rabi": "November"
+    },
+    "harvesting_months": {
+      "rabi": "March-April"
+    },
+    "irrigation_notes": "More drought- and salinity-tolerant than wheat. 2-3 irrigations generally sufficient.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Tur (Arhar/Pigeon Pea)",
+    "hindi_name": "अरहर",
+    "season": [
+      "kharif"
+    ],
+    "temp_range_c": [
+      20,
+      30
+    ],
+    "rainfall_range_mm": [
+      600,
+      1000
+    ],
+    "humidity_range_pct": [
+      50,
+      75
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "black": 95,
+      "alluvial": 75,
+      "red": 65,
+      "clay": 55,
+      "sandy": 35,
+      "laterite": 40
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 500,
+    "base_price_per_kg": 84.5,
+    "msp_per_quintal": 8450,
+    "cost_pct": 28,
+    "growing_duration_days": 165,
+    "major_producing_states": [
+      "Maharashtra",
+      "Karnataka",
+      "Madhya Pradesh",
+      "Uttar Pradesh",
+      "Gujarat"
+    ],
+    "sowing_months": {
+      "kharif": "June-July"
+    },
+    "harvesting_months": {
+      "kharif": "December-January"
+    },
+    "irrigation_notes": "Deep-rooted and drought-tolerant. Mostly rainfed; avoid waterlogging, especially at flowering.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Moong (Green Gram)",
+    "hindi_name": "मूंग",
+    "season": [
+      "kharif",
+      "zaid"
+    ],
+    "temp_range_c": [
+      25,
+      35
+    ],
+    "rainfall_range_mm": [
+      350,
+      600
+    ],
+    "humidity_range_pct": [
+      40,
+      65
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 85,
+      "sandy": 80,
+      "black": 60,
+      "red": 55,
+      "clay": 40,
+      "laterite": 35
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 350,
+    "base_price_per_kg": 87.8,
+    "msp_per_quintal": 8780,
+    "cost_pct": 25,
+    "growing_duration_days": 65,
+    "major_producing_states": [
+      "Rajasthan",
+      "Maharashtra",
+      "Madhya Pradesh",
+      "Karnataka",
+      "Andhra Pradesh"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "zaid": "March-April"
+    },
+    "harvesting_months": {
+      "kharif": "September",
+      "zaid": "May-June"
+    },
+    "irrigation_notes": "Short-duration pulse, good for catch-cropping between main seasons. 1-2 light irrigations in zaid.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Urad (Black Gram)",
+    "hindi_name": "उड़द",
+    "season": [
+      "kharif"
+    ],
+    "temp_range_c": [
+      25,
+      35
+    ],
+    "rainfall_range_mm": [
+      600,
+      900
+    ],
+    "humidity_range_pct": [
+      50,
+      75
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "black": 85,
+      "alluvial": 80,
+      "clay": 60,
+      "red": 55,
+      "sandy": 40,
+      "laterite": 35
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 350,
+    "base_price_per_kg": 82.0,
+    "msp_per_quintal": 8200,
+    "cost_pct": 26,
+    "growing_duration_days": 90,
+    "major_producing_states": [
+      "Madhya Pradesh",
+      "Maharashtra",
+      "Uttar Pradesh",
+      "Rajasthan",
+      "Tamil Nadu"
+    ],
+    "sowing_months": {
+      "kharif": "June-July"
+    },
+    "harvesting_months": {
+      "kharif": "September-October"
+    },
+    "irrigation_notes": "Mostly rainfed; sensitive to waterlogging, needs well-drained fields.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Lentil (Masoor)",
+    "hindi_name": "मसूर",
+    "season": [
+      "rabi"
+    ],
+    "temp_range_c": [
+      15,
+      25
+    ],
+    "rainfall_range_mm": [
+      350,
+      500
+    ],
+    "humidity_range_pct": [
+      35,
+      55
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 90,
+      "black": 70,
+      "clay": 55,
+      "red": 50,
+      "sandy": 35,
+      "laterite": 30
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 450,
+    "base_price_per_kg": 70.0,
+    "msp_per_quintal": 7000,
+    "cost_pct": 25,
+    "growing_duration_days": 110,
+    "major_producing_states": [
+      "Madhya Pradesh",
+      "Uttar Pradesh",
+      "West Bengal",
+      "Bihar",
+      "Rajasthan"
+    ],
+    "sowing_months": {
+      "rabi": "October-November"
+    },
+    "harvesting_months": {
+      "rabi": "February-March"
+    },
+    "irrigation_notes": "Mostly grown on residual soil moisture; 1 light irrigation at flowering if available.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Sunflower",
+    "hindi_name": "सूरजमुखी",
+    "season": [
+      "kharif",
+      "rabi",
+      "zaid"
+    ],
+    "temp_range_c": [
+      20,
+      32
+    ],
+    "rainfall_range_mm": [
+      500,
+      750
+    ],
+    "humidity_range_pct": [
+      40,
+      65
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "black": 90,
+      "alluvial": 85,
+      "sandy": 55,
+      "red": 65,
+      "clay": 50,
+      "laterite": 40
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 500,
+    "base_price_per_kg": 83.43,
+    "msp_per_quintal": 8343,
+    "cost_pct": 30,
+    "growing_duration_days": 100,
+    "major_producing_states": [
+      "Karnataka",
+      "Andhra Pradesh",
+      "Maharashtra",
+      "Bihar",
+      "Punjab"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "rabi": "October-November",
+      "zaid": "January-February"
+    },
+    "harvesting_months": {
+      "kharif": "September-October",
+      "rabi": "February-March",
+      "zaid": "April-May"
+    },
+    "irrigation_notes": "Needs irrigation at critical stages: budding, flowering, and seed filling.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Sesamum (Til)",
+    "hindi_name": "तिल",
+    "season": [
+      "kharif",
+      "zaid"
+    ],
+    "temp_range_c": [
+      25,
+      35
+    ],
+    "rainfall_range_mm": [
+      400,
+      650
+    ],
+    "humidity_range_pct": [
+      35,
+      60
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 80,
+      "sandy": 75,
+      "red": 60,
+      "black": 55,
+      "clay": 35,
+      "laterite": 40
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 250,
+    "base_price_per_kg": 103.46,
+    "msp_per_quintal": 10346,
+    "cost_pct": 28,
+    "growing_duration_days": 90,
+    "major_producing_states": [
+      "West Bengal",
+      "Rajasthan",
+      "Madhya Pradesh",
+      "Gujarat",
+      "Uttar Pradesh"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "zaid": "March-April"
+    },
+    "harvesting_months": {
+      "kharif": "September-October",
+      "zaid": "June-July"
+    },
+    "irrigation_notes": "Drought-tolerant oilseed; sensitive to waterlogging especially at germination.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Safflower (Kusum)",
+    "hindi_name": "कुसुम",
+    "season": [
+      "rabi"
+    ],
+    "temp_range_c": [
+      15,
+      30
+    ],
+    "rainfall_range_mm": [
+      300,
+      500
+    ],
+    "humidity_range_pct": [
+      30,
+      55
+    ],
+    "soil_types": {
+      "black": 100,
+      "loamy": 80,
+      "alluvial": 70,
+      "clay": 55,
+      "red": 50,
+      "sandy": 35,
+      "laterite": 30
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 400,
+    "base_price_per_kg": 65.4,
+    "msp_per_quintal": 6540,
+    "cost_pct": 27,
+    "growing_duration_days": 125,
+    "major_producing_states": [
+      "Maharashtra",
+      "Karnataka",
+      "Telangana",
+      "Odisha",
+      "Chhattisgarh"
+    ],
+    "sowing_months": {
+      "rabi": "September-October"
+    },
+    "harvesting_months": {
+      "rabi": "February-March"
+    },
+    "irrigation_notes": "Deep-rooted and very drought-hardy. Grown mostly on conserved soil moisture with minimal irrigation.",
+    "msp_season": "2026-27",
+    "price_source": "CACP/CCEA MSP"
+  },
+  {
+    "name": "Jute",
+    "hindi_name": "जूट",
+    "season": [
+      "kharif"
+    ],
+    "temp_range_c": [
+      24,
+      37
+    ],
+    "rainfall_range_mm": [
+      1200,
+      2000
+    ],
+    "humidity_range_pct": [
+      70,
+      90
+    ],
+    "soil_types": {
+      "alluvial": 100,
+      "clay": 70,
+      "loamy": 65,
+      "black": 40,
+      "red": 30,
+      "sandy": 20,
+      "laterite": 35
+    },
+    "water_requirement": "high",
+    "yield_per_acre_kg": 950,
+    "base_price_per_kg": 56.5,
+    "msp_per_quintal": 5650,
+    "cost_pct": 32,
+    "growing_duration_days": 120,
+    "major_producing_states": [
+      "West Bengal",
+      "Bihar",
+      "Assam",
+      "Odisha",
+      "Meghalaya"
+    ],
+    "sowing_months": {
+      "kharif": "March-April"
+    },
+    "harvesting_months": {
+      "kharif": "July-September"
+    },
+    "irrigation_notes": "Needs high humidity and standing water for post-harvest retting; largely rainfed in monsoon-fed lowlands.",
+    "msp_season": "2025-26",
+    "price_source": "CACP/CCEA MSP, raw jute TD-3 grade — most recent confirmed figure"
+  },
+  {
+    "name": "Brinjal (Eggplant)",
+    "hindi_name": "बैंगन",
+    "season": [
+      "kharif",
+      "rabi",
+      "zaid"
+    ],
+    "temp_range_c": [
+      20,
+      32
+    ],
+    "rainfall_range_mm": [
+      600,
+      1200
+    ],
+    "humidity_range_pct": [
+      50,
+      80
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 85,
+      "red": 70,
+      "sandy": 50,
+      "laterite": 55,
+      "black": 55,
+      "clay": 45
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 10000,
+    "base_price_per_kg": 14,
+    "msp_per_quintal": null,
+    "cost_pct": 35,
+    "growing_duration_days": 100,
+    "major_producing_states": [
+      "West Bengal",
+      "Odisha",
+      "Gujarat",
+      "Bihar",
+      "Andhra Pradesh"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "rabi": "October-November",
+      "zaid": "February-March"
+    },
+    "harvesting_months": {
+      "kharif": "September-November",
+      "rabi": "January-March",
+      "zaid": "May-June"
+    },
+    "irrigation_notes": "Frequent light irrigation preferred; drip irrigation improves fruit quality and reduces disease.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference"
+  },
+  {
+    "name": "Cabbage",
+    "hindi_name": "पत्तागोभी",
+    "season": [
+      "rabi"
+    ],
+    "temp_range_c": [
+      15,
+      25
+    ],
+    "rainfall_range_mm": [
+      500,
+      900
+    ],
+    "humidity_range_pct": [
+      50,
+      75
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 90,
+      "clay": 65,
+      "red": 55,
+      "black": 50,
+      "sandy": 45,
+      "laterite": 40
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 16000,
+    "base_price_per_kg": 10,
+    "msp_per_quintal": null,
+    "cost_pct": 35,
+    "growing_duration_days": 90,
+    "major_producing_states": [
+      "West Bengal",
+      "Odisha",
+      "Bihar",
+      "Uttar Pradesh",
+      "Karnataka"
+    ],
+    "sowing_months": {
+      "rabi": "September-October (nursery), transplanted October-November"
+    },
+    "harvesting_months": {
+      "rabi": "December-February"
+    },
+    "irrigation_notes": "Needs consistent soil moisture; drip or furrow irrigation every 6-8 days.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference"
+  },
+  {
+    "name": "Okra (Bhindi)",
+    "hindi_name": "भिंडी",
+    "season": [
+      "kharif",
+      "zaid"
+    ],
+    "temp_range_c": [
+      22,
+      35
+    ],
+    "rainfall_range_mm": [
+      500,
+      900
+    ],
+    "humidity_range_pct": [
+      50,
+      80
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 85,
+      "sandy": 60,
+      "red": 65,
+      "black": 55,
+      "clay": 45,
+      "laterite": 50
+    },
+    "water_requirement": "medium",
+    "yield_per_acre_kg": 6000,
+    "base_price_per_kg": 16,
+    "msp_per_quintal": null,
+    "cost_pct": 33,
+    "growing_duration_days": 60,
+    "major_producing_states": [
+      "Gujarat",
+      "West Bengal",
+      "Odisha",
+      "Bihar",
+      "Karnataka"
+    ],
+    "sowing_months": {
+      "kharif": "June-July",
+      "zaid": "February-March"
+    },
+    "harvesting_months": {
+      "kharif": "August-October",
+      "zaid": "April-June"
+    },
+    "irrigation_notes": "Sensitive to waterlogging; regular light irrigation every 4-6 days in dry spells.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference"
+  },
+  {
+    "name": "Coriander (Dhania)",
+    "hindi_name": "धनिया",
+    "season": [
+      "rabi"
+    ],
+    "temp_range_c": [
+      15,
+      27
+    ],
+    "rainfall_range_mm": [
+      350,
+      550
+    ],
+    "humidity_range_pct": [
+      35,
+      60
+    ],
+    "soil_types": {
+      "loamy": 100,
+      "alluvial": 85,
+      "black": 60,
+      "clay": 50,
+      "red": 45,
+      "sandy": 40,
+      "laterite": 30
+    },
+    "water_requirement": "low",
+    "yield_per_acre_kg": 500,
+    "base_price_per_kg": 70,
+    "msp_per_quintal": null,
+    "cost_pct": 30,
+    "growing_duration_days": 100,
+    "major_producing_states": [
+      "Rajasthan",
+      "Madhya Pradesh",
+      "Gujarat",
+      "Andhra Pradesh",
+      "Assam"
+    ],
+    "sowing_months": {
+      "rabi": "October-November"
+    },
+    "harvesting_months": {
+      "rabi": "February-March"
+    },
+    "irrigation_notes": "Light and frequent irrigation; avoid waterlogging, especially in early growth stages.",
+    "msp_season": null,
+    "price_source": "seeded mandi reference — dry coriander seed"
+  }
+]
