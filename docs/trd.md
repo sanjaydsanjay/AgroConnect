@@ -34,13 +34,15 @@ PostgreSQL
 - Recharts
 
 ### Backend
-- FastAPI + Python
-- REST API
-- JWT authentication
+- Supabase backend
+- Supabase Auth and Row Level Security
+- Supabase Edge Functions / REST API
+- Supabase PostgreSQL as the primary database
 
 ### Database
-- PostgreSQL
-- Supabase/Neon optional for hosted PostgreSQL
+- Supabase PostgreSQL
+- Supabase Auth / RLS
+- Supabase storage optional for assets
 
 ### AI/Data
 - Python
@@ -56,7 +58,7 @@ PostgreSQL
 
 ### Deployment
 - Vercel/Netlify for frontend
-- Render/Railway for backend
+- Supabase for backend and database
 - Managed PostgreSQL
 
 ## 3. Core Services
@@ -339,8 +341,8 @@ Production-like demo environment:
 
 ```text
 Frontend -> Vercel/Netlify
-Backend  -> Render/Railway
-Database -> PostgreSQL/Supabase/Neon
+Backend  -> Supabase
+Database -> Supabase PostgreSQL
 ```
 
 Maintain a `.env.example` and documented setup steps.
