@@ -25,7 +25,7 @@ AI-powered crop planning and farm-to-market platform.
 
 ## Team
 
-- Team Member 1 — Frontend Lead
-- Team Member 2 — Backend Lead
-- Team Member 3 — AI/Data Lead
-- Team Member 4 — Product/Integration/QA Lead
+Raviteja M	Frontend Lead	UI, UX implementation, navigation
+Sanjay D	Backend Lead	API, DB, auth, business logic
+Javali Ajay	AI/Data Lead	recommendation, weather, market intelligence
+Chethan Kumar — Product/Integration/QA Lead
