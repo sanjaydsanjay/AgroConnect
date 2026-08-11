@@ -13,7 +13,8 @@ def test_health_endpoint():
         assert data["market_entries_loaded"] >= 45
 
 
-def test_recommend_endpoint_dev_auth():
+def test_recommend_endpoint_dev_auth(monkeypatch):
+    monkeypatch.setenv("USE_FALLBACK_DATA", "true")
     with TestClient(app) as client:
         payload = {
             "latitude": 12.97,
@@ -51,7 +52,8 @@ def test_recommend_endpoint_dev_auth():
         assert "harvesting_window" in top
 
 
-def test_market_prices_endpoint():
+def test_market_prices_endpoint(monkeypatch):
+    monkeypatch.setenv("USE_FALLBACK_DATA", "true")
     with TestClient(app) as client:
         response = client.get("/api/market/prices?crop=Tomato&district=Kolar")
         assert response.status_code == 200
@@ -63,7 +65,8 @@ def test_market_prices_endpoint():
         assert "suggested_selling_window" in data
 
 
-def test_bulk_market_prices_endpoint():
+def test_bulk_market_prices_endpoint(monkeypatch):
+    monkeypatch.setenv("USE_FALLBACK_DATA", "true")
     with TestClient(app) as client:
         payload = {
             "queries": [
@@ -80,7 +83,8 @@ def test_bulk_market_prices_endpoint():
         assert data["results"][0]["crop"] == "Tomato"
 
 
-def test_market_trends_endpoint():
+def test_market_trends_endpoint(monkeypatch):
+    monkeypatch.setenv("USE_FALLBACK_DATA", "true")
     with TestClient(app) as client:
         response = client.get("/api/market/trends?crop=Tomato")
         assert response.status_code == 200
@@ -90,7 +94,8 @@ def test_market_trends_endpoint():
         assert "price_change_7d_pct" in data[0]
 
 
-def test_market_demand_endpoint():
+def test_market_demand_endpoint(monkeypatch):
+    monkeypatch.setenv("USE_FALLBACK_DATA", "true")
     with TestClient(app) as client:
         response = client.get("/api/market/demand?crop=Tomato")
         assert response.status_code == 200
@@ -100,7 +105,8 @@ def test_market_demand_endpoint():
         assert "demand_reason" in data[0]
 
 
-def test_analytics_summary_endpoint():
+def test_analytics_summary_endpoint(monkeypatch):
+    monkeypatch.setenv("USE_FALLBACK_DATA", "true")
     with TestClient(app) as client:
         response = client.get("/api/analytics/summary")
         assert response.status_code == 200

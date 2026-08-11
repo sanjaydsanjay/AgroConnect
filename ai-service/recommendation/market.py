@@ -43,10 +43,14 @@ async def fetch_live_ogd_mandi_prices(
     limit: int = 10,
 ) -> Optional[dict]:
     """Fetch real-time daily mandi prices directly from data.gov.in OGD India API."""
+    if os.getenv("USE_FALLBACK_DATA", "false").lower() == "true":
+        return None
+
     api_key = os.getenv("DATA_GOV_API_KEY", "").strip()
     if not api_key:
         logger.debug("DATA_GOV_API_KEY not configured. Using local Agmarknet baseline dataset.")
         return None
+
 
     commodity_filter = AGMARKNET_COMMODITY_MAP.get(crop_name, crop_name)
 
