@@ -1,0 +1,26 @@
+# Secrets — never commit
+.env
+.env.local
+.env.test
+.env.production
+*.pem
+*.key
+
+# Dependencies
+node_modules/
+
+# Supabase local runtime artifacts
+supabase/.temp/
+supabase/.branches/
+supabase/.env
+
+# Build output / logs
+dist/
+coverage/
+*.log
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
