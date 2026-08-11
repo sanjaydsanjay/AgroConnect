@@ -278,11 +278,58 @@ Content-Type: application/json
 
 ---
 
-### 7. Analytics Summary Feed
+### 7. Regional NLP Voice Search & Entity Recognition
+
+`POST /api/voice/search`  
+**Auth Required:** Yes (`Bearer <JWT>`)  
+**Description:** Processes spoken crop queries in 10+ Indian regional languages (Hindi, Kannada, Marathi, Tamil, Telugu, Punjabi, Gujarati, Bengali, Hinglish) and fuzzy-matches recognized audio transcripts against the 31 ICAR crop catalog to return spot mandi prices, MSP rates, and recommendations.
+
+#### Request Body
+```json
+{
+  "spoken_text": "मुझे टमाटर की कीमत बताओ",
+  "language": "auto"
+}
+```
+
+#### Response Example (`200 OK`)
+```json
+{
+  "original_query": "मुझे टमाटर की कीमत बताओ",
+  "detected_language": "hi",
+  "intent": "price_query",
+  "matched_crop": {
+    "crop": "Tomato",
+    "hindi_name": "टमाटर",
+    "matched_term": "टमाटर",
+    "confidence_score": 1.0,
+    "msp_per_quintal": null,
+    "market_price_per_quintal": 1800.0,
+    "trend": "up"
+  },
+  "all_candidate_matches": [
+    {
+      "crop": "Tomato",
+      "hindi_name": "टमाटर",
+      "matched_term": "टमाटर",
+      "confidence_score": 1.0,
+      "msp_per_quintal": null,
+      "market_price_per_quintal": 1800.0,
+      "trend": "up"
+    }
+  ],
+  "response_summary": "Recognized query for Tomato (टमाटर). Current Mandi spot price is ₹1,800/quintal with upward price trend."
+}
+```
+
+---
+
+### 8. Analytics Summary Feed
 
 `GET /api/analytics/summary`  
 **Auth Required:** Yes (`Bearer <JWT>`)  
 **Description:** Real-time analytics dashboard data summarizing total recommendations generated, top crops, and dataset statistics.
+
 
 #### Response Example (`200 OK`)
 ```json
