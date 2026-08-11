@@ -1,2 +1,7 @@
 .env
-/Docs
+ai-service/.env
+ai-service/evaluation/streamlit_app.py
+.streamlit/
+__pycache__/
+*.pyc
+.pytest_cache/

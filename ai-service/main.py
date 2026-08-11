@@ -35,6 +35,8 @@ from recommendation.schemas import (
     MarketTrendItem,
     MarketDemandItem,
     AnalyticsSummary,
+    VoiceSearchRequest,
+    VoiceSearchResponse,
 )
 from recommendation.weather import fetch_weather
 from recommendation.service import generate_recommendations
@@ -44,6 +46,7 @@ from recommendation.market import (
     get_market_trends,
     get_market_demand,
 )
+from recommendation.nlp_voice import parse_voice_query
 from auth import verify_supabase_token
 from db import get_supabase_client
 
@@ -306,6 +309,29 @@ async def get_analytics_summary(
         "real_data_metrics": real_metrics,
         "generated_at": datetime.now(timezone.utc).isoformat(),
     }
+
+
+@app.post(
+    "/api/voice/search",
+    response_model=VoiceSearchResponse,
+    summary="Regional NLP Voice Search & Entity Recognition",
+    description="Processes spoken crop queries in Hindi, Kannada, Marathi, Tamil, Telugu, Punjabi, Hinglish, etc., to extract target crops, intent, and live mandi spot prices.",
+)
+async def voice_crop_search(
+    request: VoiceSearchRequest,
+    user_id: str = Depends(verify_supabase_token),
+):
+    """Regional NLP voice crop recognition endpoint."""
+    crops = getattr(app.state, "crops_data", [])
+    markets = getattr(app.state, "market_data", [])
+
+    parsed = parse_voice_query(
+        spoken_text=request.spoken_text,
+        crops_data=crops,
+        market_data=markets,
+        language_hint=request.language or "auto",
+    )
+    return parsed
 
 
 # ---------------------------------------------------------------------------

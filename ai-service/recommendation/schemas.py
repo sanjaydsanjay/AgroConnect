@@ -123,3 +123,28 @@ class AnalyticsSummary(BaseModel):
     recommendation_distribution: Dict[str, int]
     real_data_metrics: Dict[str, Any]
     generated_at: str
+
+
+class VoiceSearchRequest(BaseModel):
+    spoken_text: str
+    language: Optional[str] = "auto"
+
+
+class VoiceCropMatch(BaseModel):
+    crop: str
+    hindi_name: Optional[str] = None
+    matched_term: str
+    confidence_score: float
+    msp_per_quintal: Optional[float] = None
+    market_price_per_quintal: Optional[float] = None
+    trend: Optional[str] = None
+
+
+class VoiceSearchResponse(BaseModel):
+    original_query: str
+    detected_language: str
+    intent: Literal["price_query", "recommendation_query", "general_search"]
+    matched_crop: Optional[VoiceCropMatch] = None
+    all_candidate_matches: List[VoiceCropMatch] = []
+    response_summary: str
+
