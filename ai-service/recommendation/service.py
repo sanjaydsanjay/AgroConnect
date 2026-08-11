@@ -61,11 +61,9 @@ async def generate_recommendations(
     top_5 = scored_crops[:5]
 
     # Asynchronously persist to Supabase DB if user_id is provided
+    # (Removed: Persistence ownership belongs to the Supabase backend Edge Function)
     if user_id:
-        try:
-            await insert_recommendations(user_id, top_5)
-        except Exception:
-            pass
+        pass
 
     processed_context = {
         "latitude": request.latitude,
