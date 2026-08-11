@@ -113,14 +113,38 @@ export interface RecommendationResponse {
   processed_context: ProcessedContext;
   recommendations: CropRecommendation[];
 }
+
+export interface VoiceSearchRequest {
+  spoken_text: string;
+  language?: string; // "auto", "hi", "kn", "mr", "ta", "te", "pa", "en-IN"
+}
+
+export interface VoiceCropMatch {
+  crop: string;
+  hindi_name?: string;
+  matched_term: string;
+  confidence_score: number;
+  msp_per_quintal?: number;
+  market_price_per_quintal?: number;
+  trend?: string;
+}
+
+export interface VoiceSearchResponse {
+  original_query: string;
+  detected_language: string;
+  intent: "price_query" | "recommendation_query" | "general_search";
+  matched_crop?: VoiceCropMatch;
+  all_candidate_matches: VoiceCropMatch[];
+  response_summary: string;
+}
 ```
 
-### Step 2.3: Recommendation API Client (`lib/aiClient.ts`)
+### Step 2.3: Recommendation & Voice API Client (`lib/aiClient.ts`)
 Create an API client module in Next.js:
 
 ```typescript
 import { supabase } from "@/lib/supabaseClient";
-import { RecommendationRequest, RecommendationResponse } from "@/types/ai-service";
+import { RecommendationRequest, RecommendationResponse, VoiceSearchResponse } from "@/types/ai-service";
 
 const AI_BASE_URL = process.env.NEXT_PUBLIC_AI_SERVICE_URL || "http://localhost:8000";
 
@@ -130,7 +154,6 @@ const AI_BASE_URL = process.env.NEXT_PUBLIC_AI_SERVICE_URL || "http://localhost:
 export async function getCropRecommendations(
   payload: RecommendationRequest
 ): Promise<RecommendationResponse> {
-  // Extract user JWT access token from Supabase Session
   const { data: { session } } = await supabase.auth.getSession();
   const token = session?.access_token;
 
@@ -150,6 +173,36 @@ export async function getCropRecommendations(
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
     throw new Error(errorData.detail || `AI Service Error (${response.status})`);
+  }
+
+  return await response.json();
+}
+
+/**
+ * Search crop details and spot prices using spoken regional voice query transcript.
+ */
+export async function searchCropByVoice(
+  spokenText: string,
+  language: string = "auto"
+): Promise<VoiceSearchResponse> {
+  const { data: { session } } = await supabase.auth.getSession();
+  const token = session?.access_token;
+
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  const response = await fetch(`${AI_BASE_URL}/api/voice/search`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ spoken_text: spokenText, language }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Voice search API request failed");
   }
 
   return await response.json();
@@ -185,9 +238,78 @@ export async function getBulkMarketPrices(
 }
 ```
 
-### Step 2.4: Using in React Components
+### Step 2.4: React Microphone Voice Search Component (`components/VoiceCropSearchButton.tsx`)
 ```tsx
 import { useState } from "react";
+import { searchCropByVoice } from "@/lib/aiClient";
+import { VoiceSearchResponse } from "@/types/ai-service";
+
+export default function VoiceCropSearchButton() {
+  const [listening, setListening] = useState(false);
+  const [transcript, setTranscript] = useState("");
+  const [result, setResult] = useState<VoiceSearchResponse | null>(null);
+
+  function startVoiceRecognition() {
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      alert("Web Speech API is not supported in this browser. Please use Chrome/Edge.");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "hi-IN"; // Supports hi-IN, kn-IN, mr-IN, ta-IN, te-IN, en-IN
+    recognition.interimResults = false;
+
+    recognition.onstart = () => setListening(true);
+    recognition.onend = () => setListening(false);
+
+    recognition.onresult = async (event: any) => {
+      const spokenText = event.results[0][0].transcript;
+      setTranscript(spokenText);
+
+      // Call AI Service NLP Voice Search
+      try {
+        const res = await searchCropByVoice(spokenText, "auto");
+        setResult(res);
+      } catch (err) {
+        console.error("Voice NLP search error:", err);
+      }
+    };
+
+    recognition.start();
+  }
+
+  return (
+    <div className="p-4 border rounded-lg bg-emerald-50">
+      <button
+        onClick={startVoiceRecognition}
+        className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-full font-bold hover:bg-emerald-700"
+      >
+        🎙️ {listening ? "Listening... Speak Now" : "Speak Crop Name (Voice Search)"}
+      </button>
+
+      {transcript && <p className="mt-2 text-sm text-gray-700">Spoken: "{transcript}"</p>}
+
+      {result && result.matched_crop && (
+        <div className="mt-3 p-3 bg-white border rounded shadow-sm">
+          <h4 className="font-bold text-emerald-800">
+            {result.matched_crop.crop} ({result.matched_crop.hindi_name})
+          </h4>
+          <p className="text-sm text-gray-600">Intent: {result.intent.toUpperCase()}</p>
+          <p className="font-semibold text-emerald-700">{result.response_summary}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+### Step 2.5: Using Recommendation Cards in React Components
+```tsx
+import { useState } from "react";
+
 import { getCropRecommendations } from "@/lib/aiClient";
 import { CropRecommendation } from "@/types/ai-service";
 
