@@ -83,3 +83,76 @@ export interface MandiPriceResult {
 export interface BulkPriceResponse {
   results: MandiPriceResult[];
 }
+
+export interface VoiceSearchRequest {
+  spoken_text: string;
+  language?: string;
+}
+
+export interface VoiceCropMatch {
+  crop: string;
+  hindi_name?: string;
+  matched_term: string;
+  confidence_score: number;
+  msp_per_quintal?: number;
+  market_price_per_quintal?: number;
+  trend?: string;
+}
+
+export interface VoiceSearchResponse {
+  original_query: string;
+  detected_language: string;
+  intent: 'price_query' | 'recommendation_query' | 'general_search';
+  matched_crop?: VoiceCropMatch;
+  all_candidate_matches: VoiceCropMatch[];
+  response_summary: string;
+}
+
+export interface MarketIntelResponse {
+  crop: string;
+  district: string;
+  state?: string;
+  mandi?: string;
+  price: number;
+  msp_per_quintal?: number;
+  unit: string;
+  trend: string;
+  demand: string;
+  suggested_selling_window: string;
+  price_history_7d: number[];
+  price_history_30d: number[];
+  data_source: string;
+}
+
+export interface MarketTrendItem {
+  crop: string;
+  district: string;
+  state: string;
+  mandi: string;
+  current_price: number;
+  msp_per_quintal?: number;
+  trend: string;
+  price_change_7d_pct: number;
+  price_history_7d: number[];
+  suggested_selling_window: string;
+}
+
+export interface MarketDemandItem {
+  crop: string;
+  district: string;
+  mandi: string;
+  demand: string;
+  current_price: number;
+  msp_per_quintal?: number;
+  demand_reason: string;
+}
+
+export interface AnalyticsSummary {
+  total_recommendations: number;
+  most_recommended_crop: string;
+  avg_suitability_score: number;
+  recommendation_distribution: Record<string, number>;
+  real_data_metrics: Record<string, any>;
+  generated_at: string;
+}
+

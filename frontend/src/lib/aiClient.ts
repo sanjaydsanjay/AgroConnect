@@ -9,6 +9,12 @@ import type {
   RecommendationResponse,
   BulkPriceQuery,
   BulkPriceResponse,
+  VoiceSearchRequest,
+  VoiceSearchResponse,
+  MarketIntelResponse,
+  MarketTrendItem,
+  MarketDemandItem,
+  AnalyticsSummary,
 } from '../types/ai-service';
 
 const AI_BASE_URL =
@@ -104,6 +110,42 @@ export async function getCropRecommendations(
 }
 
 /**
+ * Parse regional spoken text or multilingual transcript into structured crop, state, & intent.
+ */
+export async function parseVoiceCropQuery(
+  spokenText: string,
+  language: string = 'auto',
+  signal?: AbortSignal
+): Promise<VoiceSearchResponse> {
+  const headers = await getAuthHeaders();
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(`${AI_BASE_URL}/api/voice-search`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ spoken_text: spokenText, language }),
+      signal: signal || controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`Voice search service error (${response.status})`);
+    }
+
+    return (await response.json()) as VoiceSearchResponse;
+  } catch (err: any) {
+    clearTimeout(timeoutId);
+    if (err.name === 'AbortError') {
+      throw new Error('Voice search service request timed out.');
+    }
+    throw err;
+  }
+}
+
+/**
  * Fetch live mandi spot prices for a batch of crops.
  */
 export async function getBulkMarketPrices(
@@ -139,6 +181,81 @@ export async function getBulkMarketPrices(
 }
 
 /**
+ * Fetch market price trends and 7-day change analytics.
+ */
+export async function getMarketTrends(
+  crop?: string,
+  signal?: AbortSignal
+): Promise<MarketTrendItem[]> {
+  const headers = await getAuthHeaders();
+  const url = new URL(`${AI_BASE_URL}/api/market/trends`);
+  if (crop) url.searchParams.append('crop', crop);
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(url.toString(), {
+      method: 'GET',
+      headers,
+      signal: signal || controller.signal,
+    });
+    clearTimeout(timeoutId);
+    if (!response.ok) throw new Error(`Market trend error (${response.status})`);
+    return (await response.json()) as MarketTrendItem[];
+  } catch (err: any) {
+    clearTimeout(timeoutId);
+    throw err;
+  }
+}
+
+/**
+ * Fetch platform demand indicators.
+ */
+export async function getMarketDemand(signal?: AbortSignal): Promise<MarketDemandItem[]> {
+  const headers = await getAuthHeaders();
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(`${AI_BASE_URL}/api/market/demand`, {
+      method: 'GET',
+      headers,
+      signal: signal || controller.signal,
+    });
+    clearTimeout(timeoutId);
+    if (!response.ok) throw new Error(`Demand analytics error (${response.status})`);
+    return (await response.json()) as MarketDemandItem[];
+  } catch (err: any) {
+    clearTimeout(timeoutId);
+    throw err;
+  }
+}
+
+/**
+ * Fetch platform analytics summary for admin dashboard.
+ */
+export async function getAnalyticsSummary(signal?: AbortSignal): Promise<AnalyticsSummary> {
+  const headers = await getAuthHeaders();
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(`${AI_BASE_URL}/api/analytics/summary`, {
+      method: 'GET',
+      headers,
+      signal: signal || controller.signal,
+    });
+    clearTimeout(timeoutId);
+    if (!response.ok) throw new Error(`Analytics summary error (${response.status})`);
+    return (await response.json()) as AnalyticsSummary;
+  } catch (err: any) {
+    clearTimeout(timeoutId);
+    throw err;
+  }
+}
+
+/**
  * Health check — returns true if the AI service is reachable.
  */
 export async function checkServiceHealth(): Promise<boolean> {
@@ -155,3 +272,4 @@ export async function checkServiceHealth(): Promise<boolean> {
     return false;
   }
 }
+

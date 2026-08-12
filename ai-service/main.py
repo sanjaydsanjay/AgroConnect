@@ -72,6 +72,7 @@ async def lifespan(app: FastAPI):
             app.state.market_data = json.load(f)
 
     print(f"Loaded {len(app.state.crops_data)} real Indian crops, {len(app.state.market_data)} real Mandi price entries")
+    yield
 
 app = FastAPI(
     title="AgriConnect AI Service",

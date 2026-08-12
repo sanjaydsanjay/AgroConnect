@@ -7,7 +7,8 @@ import {
   $selectedDistrict,
   resetMarketplaceFilters,
 } from '../../../stores/marketplaceStore';
-import { Search, X } from 'lucide-react';
+import { Search, X, Mic } from 'lucide-react';
+import { parseVoiceCropQuery } from '../../../lib/aiClient';
 
 const CATEGORIES = ['All', 'Vegetables', 'Spices', 'Cereals', 'Pulses', 'Fruits'];
 const DISTRICTS   = ['All', 'Mandya', 'Dharwad', 'Ramanagara', 'Bengaluru', 'Belagavi'];
@@ -39,19 +40,60 @@ export const MarketplaceFilter: React.FC = () => {
           <Search className="w-4 h-4 text-[#8f8f8f] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
             type="text"
-            placeholder="Search crop, farmer, or district…"
+            placeholder="Search crop, farmer, or district (or click mic for voice search)…"
             value={searchQuery}
             onChange={(e) => $searchQuery.set(e.target.value)}
-            className="w-full bg-[#fafafa] border border-[#ebebeb] text-[#171717] text-sm rounded-md pl-9 pr-3 py-2 focus:outline-none focus:border-[#0070f3] focus:ring-1 focus:ring-[#0070f3]"
+            className="w-full bg-[#fafafa] border border-[#ebebeb] text-[#171717] text-sm rounded-md pl-9 pr-16 py-2 focus:outline-none focus:border-[#0070f3] focus:ring-1 focus:ring-[#0070f3]"
           />
-          {searchQuery && (
+          <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
             <button
-              onClick={() => $searchQuery.set('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8f8f8f] hover:text-[#171717]"
+              type="button"
+              title="Voice Search (Speak crop name in English/Hindi)"
+              onClick={async () => {
+                const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+                if (!SpeechRecognition) {
+                  const query = prompt('Enter or speak your crop search query:');
+                  if (query) {
+                    try {
+                      const res = await parseVoiceCropQuery(query);
+                      if (res.matched_crop) $searchQuery.set(res.matched_crop.crop);
+                      else $searchQuery.set(query);
+                    } catch {
+                      $searchQuery.set(query);
+                    }
+                  }
+                  return;
+                }
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'en-IN';
+                recognition.onresult = async (event: any) => {
+                  const transcript = event.results[0][0].transcript;
+                  try {
+                    const res = await parseVoiceCropQuery(transcript);
+                    if (res.matched_crop) {
+                      $searchQuery.set(res.matched_crop.crop);
+                    } else {
+                      $searchQuery.set(transcript);
+                    }
+                  } catch {
+                    $searchQuery.set(transcript);
+                  }
+                };
+                recognition.start();
+              }}
+              className="text-[#8f8f8f] hover:text-[#0070f3] p-1 rounded transition-colors"
             >
-              <X className="w-3.5 h-3.5" />
+              <Mic className="w-3.5 h-3.5" />
             </button>
-          )}
+            {searchQuery && (
+              <button
+                onClick={() => $searchQuery.set('')}
+                className="text-[#8f8f8f] hover:text-[#171717] p-1 rounded"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
         </div>
 
         <select
