@@ -1,6 +1,7 @@
 ---
 import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
 import { SmartCropPlanner } from '../../components/react/farmer/SmartCropPlanner';
+import { AuthGuard } from '../../components/react/auth/AuthGuard';
 ---
 
 <AppDashboardLayout
@@ -9,5 +10,7 @@ import { SmartCropPlanner } from '../../components/react/farmer/SmartCropPlanner
   pageTitle="Smart Crop Planner & Weather Intelligence"
   pageSubtitle="Select your farm location, inspect live weather forecasts, and run AI crop suitability matching."
 >
-  <SmartCropPlanner client:load />
+  <AuthGuard client:load serviceTitle="AI Crop Suitability Engine" serviceDescription="Get tailored crop recommendations scored by real-time Mandi price trends and soil analytics.">
+    <SmartCropPlanner client:load />
+  </AuthGuard>
 </AppDashboardLayout>

@@ -1,6 +1,7 @@
 ---
 import AppDashboardLayout from '../layouts/AppDashboardLayout.astro';
 import { UserProfile } from '../components/react/profile/UserProfile';
+import { AuthGuard } from '../components/react/auth/AuthGuard';
 ---
 
 <AppDashboardLayout
@@ -8,5 +9,7 @@ import { UserProfile } from '../components/react/profile/UserProfile';
   pageTitle="User Profile"
   pageSubtitle="Manage your account profile information and preferences."
 >
-  <UserProfile client:load />
+  <AuthGuard client:load serviceTitle="User Account Profile" serviceDescription="View and manage your registered account details, contact preferences, and platform role settings.">
+    <UserProfile client:load />
+  </AuthGuard>
 </AppDashboardLayout>

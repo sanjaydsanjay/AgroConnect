@@ -117,9 +117,14 @@ export const Navbar: React.FC = () => {
               </SquareButton>
             </div>
           ) : (
-            <a href="/login">
-              <SquareButton variant="primary" size="sm">{t('nav.logIn', lang)}</SquareButton>
-            </a>
+            <div className="flex items-center gap-2">
+              <a href="/login">
+                <SquareButton variant="ghost" size="sm">Sign In</SquareButton>
+              </a>
+              <a href="/register">
+                <SquareButton variant="primary" size="sm">Create Account</SquareButton>
+              </a>
+            </div>
           )}
         </div>
 
@@ -164,9 +169,18 @@ export const Navbar: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <a href="/login" className="text-sm font-medium text-[#0070f3] block">
-                {t('nav.logIn', lang)}
-              </a>
+              <div className="flex flex-col gap-2">
+                <a href="/login" className="w-full">
+                  <button className="w-full py-2 text-center text-sm font-medium text-[#171717] bg-[#f4f4f4] rounded-md">
+                    Sign In
+                  </button>
+                </a>
+                <a href="/register" className="w-full">
+                  <button className="w-full py-2 text-center text-sm font-medium text-white bg-[#171717] rounded-md">
+                    Create Account
+                  </button>
+                </a>
+              </div>
             )}
           </div>
         </div>

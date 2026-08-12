@@ -18,7 +18,7 @@ const DEFAULT_USER: User = {
 };
 
 const DEFAULT_SESSION: AuthSession = {
-  user: DEFAULT_USER,
+  user: null,
   role: 'farmer',
 };
 
@@ -28,7 +28,7 @@ function getInitialSession(): AuthSession {
     const raw = localStorage.getItem('agro_auth_session');
     if (!raw) return DEFAULT_SESSION;
     const parsed = JSON.parse(raw) as AuthSession;
-    if (parsed && parsed.role) {
+    if (parsed && parsed.user) {
       return parsed;
     }
     return DEFAULT_SESSION;
