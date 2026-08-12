@@ -11,7 +11,7 @@ import { AuthGuard } from '../../components/react/auth/AuthGuard';
   pageTitle="Verified Produce Sourcing Marketplace"
   pageSubtitle="Search, filter, inspect produce specs, and submit order inquiries directly to verified farmers."
 >
-  <AuthGuard client:load serviceTitle="Produce Sourcing Marketplace" serviceDescription="Access verified farmer produce listings, voice search, live Mandi price comparison, and direct order placements.">
+  <AuthGuard client:only="react" serviceTitle="Produce Sourcing Marketplace" serviceDescription="Access verified farmer produce listings, voice search, live Mandi price comparison, and direct order placements.">
     <div class="space-y-6">
       <MarketplaceFilter client:load />
       <MarketplaceGrid client:load />

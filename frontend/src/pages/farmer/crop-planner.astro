@@ -10,7 +10,7 @@ import { AuthGuard } from '../../components/react/auth/AuthGuard';
   pageTitle="Smart Crop Planner & Weather Intelligence"
   pageSubtitle="Select your farm location, inspect live weather forecasts, and run AI crop suitability matching."
 >
-  <AuthGuard client:load serviceTitle="AI Smart Crop Planner" serviceDescription="Access location-based AI crop suitability models, soil analysis, and 7-day micro-weather forecasts.">
+  <AuthGuard client:only="react" serviceTitle="AI Smart Crop Planner" serviceDescription="Access location-based AI crop suitability models, soil analysis, and 7-day micro-weather forecasts.">
     <SmartCropPlanner client:load />
   </AuthGuard>
 </AppDashboardLayout>

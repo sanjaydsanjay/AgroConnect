@@ -9,7 +9,7 @@ import { AuthGuard } from '../components/react/auth/AuthGuard';
   pageTitle="User Profile"
   pageSubtitle="Manage your account profile information and preferences."
 >
-  <AuthGuard client:load serviceTitle="User Account Profile" serviceDescription="View and manage your registered account details, contact preferences, and platform role settings.">
+  <AuthGuard client:only="react" serviceTitle="User Account Profile" serviceDescription="View and manage your registered account details, contact preferences, and platform role settings.">
     <UserProfile client:load />
   </AuthGuard>
 </AppDashboardLayout>

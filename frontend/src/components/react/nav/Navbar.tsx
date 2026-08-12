@@ -13,8 +13,10 @@ export const Navbar: React.FC = () => {
 
   const [open, setOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (typeof window === 'undefined') return;
     const updatePath = () => setCurrentPath(window.location.pathname);
     updatePath();

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStore } from '@nanostores/react';
 import { $authSession } from '../../../stores/authStore';
-import { Lock, ArrowRight, UserPlus, LogIn, Sprout } from 'lucide-react';
-import { SquareButton } from '../ui/SquareButton';
+import { Lock, UserPlus, LogIn } from 'lucide-react';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -17,6 +16,19 @@ export const AuthGuard: React.FC<AuthGuardProps> = ({
 }) => {
   const session = useStore($authSession);
   const user = session.user;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="min-h-[50vh] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#171717] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   if (user) {
     return <>{children}</>;
