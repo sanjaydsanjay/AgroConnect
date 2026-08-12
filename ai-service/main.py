@@ -81,24 +81,30 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS — allow frontend origins
+# CORS — allow Vercel, Render, and local frontend origins
 frontend_url = os.getenv("FRONTEND_URL", "http://localhost:4321")
-origins = list(set([
+allowed_origins = [
     "http://localhost:4321",
     "http://127.0.0.1:4321",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    frontend_url,
-]))
+    "https://agro-connect-unstop.vercel.app",
+    "https://agroconnect.vercel.app",
+]
+if frontend_url and frontend_url not in allowed_origins:
+    allowed_origins.append(frontend_url)
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_origin_regex=r"https://.*\.vercel\.app|https://.*\.onrender\.com|http://localhost:\d+|http://127\.0\.0\.1:\d+",
     allow_credentials=False,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"],
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=86400,
 )
 
 
