@@ -82,17 +82,21 @@ app = FastAPI(
 )
 
 # CORS — allow frontend origins
-frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:4321")
 origins = list(set([
+    "http://localhost:4321",
+    "http://127.0.0.1:4321",
     "http://localhost:3000",
-    "http://localhost:3001",
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
     frontend_url,
 ]))
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -310,6 +314,12 @@ async def get_analytics_summary(
     }
 
 
+@app.post(
+    "/api/voice-search",
+    response_model=VoiceSearchResponse,
+    summary="Regional NLP Voice Search & Entity Recognition",
+    description="Processes spoken crop queries in Hindi, Kannada, Marathi, Tamil, Telugu, Punjabi, Hinglish, etc., to extract target crops, intent, and live mandi spot prices.",
+)
 @app.post(
     "/api/voice/search",
     response_model=VoiceSearchResponse,
