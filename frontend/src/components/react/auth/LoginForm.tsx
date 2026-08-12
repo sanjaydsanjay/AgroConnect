@@ -3,6 +3,7 @@ import { useStore } from '@nanostores/react';
 import { TextInput } from '../ui/TextInput';
 import { addToast } from '../../../stores/toastStore';
 import { loginAsUser, $authSession } from '../../../stores/authStore';
+import { loginWithEmailAndPassword } from '../../../lib/supabaseClient';
 import { t } from '../../../i18n';
 import { Sprout } from 'lucide-react';
 import type { User } from '../../../types';
@@ -15,29 +16,19 @@ export const LoginForm: React.FC = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
-      const isBuyer = email.includes('buyer') || email.includes('procurement');
-      const isAdmin = email.includes('admin');
-      const role = isAdmin ? 'admin' : isBuyer ? 'buyer' : 'farmer';
-
-      const user: User = {
-        id: `usr_${Date.now()}`,
-        name: email.split('@')[0].replace('.', ' ').replace(/\b\w/g, (l) => l.toUpperCase()) || 'Authenticated User',
-        email: email,
-        phone: '+91 98450 12345',
-        role: role,
-        verified: true,
-        createdAt: new Date().toISOString(),
-      };
-
+    try {
+      const user = await loginWithEmailAndPassword(email, password);
       loginAsUser(user, true);
       addToast({ type: 'success', title: t('auth.signInTitle', lang), message: `Welcome back, ${user.name}` });
+    } catch (err: any) {
+      addToast({ type: 'error', title: 'Authentication Error', message: err?.message || 'Invalid email or password' });
+    } finally {
       setLoading(false);
-    }, 400);
+    }
   };
 
   return (

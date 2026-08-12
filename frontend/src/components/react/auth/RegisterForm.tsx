@@ -3,6 +3,7 @@ import { useStore } from '@nanostores/react';
 import { TextInput } from '../ui/TextInput';
 import { addToast } from '../../../stores/toastStore';
 import { loginAsUser, $authSession } from '../../../stores/authStore';
+import { registerWithEmailAndPassword } from '../../../lib/supabaseClient';
 import { t } from '../../../i18n';
 import { Sprout } from 'lucide-react';
 import type { User, UserRole } from '../../../types';
@@ -19,7 +20,7 @@ export const RegisterForm: React.FC = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
@@ -29,21 +30,16 @@ export const RegisterForm: React.FC = () => {
     }
 
     setLoading(true);
-    setTimeout(() => {
-      const newUser: User = {
-        id: `usr_${Date.now()}`,
-        name: name || 'Registered User',
-        email: email,
-        phone: '+91 98450 00000',
-        role: role,
-        verified: true,
-        createdAt: new Date().toISOString(),
-      };
-
+    try {
+      const newUser = await registerWithEmailAndPassword(name, email, password, role);
       loginAsUser(newUser, true);
       addToast({ type: 'success', title: t('auth.createAccountTitle', lang), message: 'Welcome to AgroConnect!' });
+    } catch (err: any) {
+      setError(err?.message || 'Failed to create account');
+      addToast({ type: 'error', title: 'Registration Error', message: err?.message || 'Account creation failed' });
+    } finally {
       setLoading(false);
-    }, 600);
+    }
   };
 
   return (
