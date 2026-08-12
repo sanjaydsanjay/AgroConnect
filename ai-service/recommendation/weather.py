@@ -69,7 +69,7 @@ async def fetch_weather(lat: float, lon: float) -> dict:
     )
 
     try:
-        async with httpx.AsyncClient(timeout=3.5) as client:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(2.0, connect=1.0)) as client:
             response = await client.get(url)
             response.raise_for_status()
             data = response.json()

@@ -21,7 +21,7 @@ const AI_BASE_URL =
   (typeof import.meta !== 'undefined' && (import.meta as any).env?.PUBLIC_AI_SERVICE_URL) ||
   'http://localhost:8000';
 
-const DEFAULT_TIMEOUT_MS = 8000;
+const DEFAULT_TIMEOUT_MS = 15000;
 
 /**
  * Maps frontend UI soil names to exact FastAPI backend schema options

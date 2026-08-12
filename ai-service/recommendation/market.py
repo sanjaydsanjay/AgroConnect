@@ -36,6 +36,12 @@ AGMARKNET_COMMODITY_MAP = {
 }
 
 
+import time
+
+_MANDI_CACHE: Dict[str, Any] = {}
+_CACHE_TTL = 600  # 10 minutes cache for successful hits
+_ERROR_CACHE_TTL = 300  # 5 minutes cache for 429/failures to prevent rate-limit loops
+
 async def fetch_live_ogd_mandi_prices(
     crop_name: str,
     district: Optional[str] = None,
@@ -45,6 +51,14 @@ async def fetch_live_ogd_mandi_prices(
     """Fetch real-time daily mandi prices directly from data.gov.in OGD India API."""
     if os.getenv("USE_FALLBACK_DATA", "false").lower() == "true":
         return None
+
+    cache_key = f"{crop_name}:{district}:{state}"
+    now = time.time()
+    if cache_key in _MANDI_CACHE:
+        cached_val, timestamp, is_error = _MANDI_CACHE[cache_key]
+        ttl = _ERROR_CACHE_TTL if is_error else _CACHE_TTL
+        if now - timestamp < ttl:
+            return cached_val
 
     api_key = os.getenv("DATA_GOV_API_KEY", "").strip()
     if not api_key:
@@ -72,16 +86,18 @@ async def fetch_live_ogd_mandi_prices(
     }
 
     try:
-        async with httpx.AsyncClient(timeout=4.0) as client:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(1.5, connect=1.0)) as client:
             response = await client.get(OGD_BASE_URL, params=params, headers=headers)
             if response.status_code != 200:
                 logger.warning(f"⚠️ data.gov.in API returned HTTP {response.status_code}")
+                _MANDI_CACHE[cache_key] = (None, now, True)
                 return None
 
             data = response.json()
             records = data.get("records", [])
             if not records:
                 logger.info(f"No records found on data.gov.in for commodity='{commodity_filter}'")
+                _MANDI_CACHE[cache_key] = (None, now, True)
                 return None
 
             rec = records[0]
@@ -106,7 +122,7 @@ async def fetch_live_ogd_mandi_prices(
 
             logger.info(f"✅ Fetched live OGD Agmarknet data: {crop_name} @ {mandi_name} = ₹{modal_price}/q")
 
-            return {
+            result = {
                 "crop_name": crop_name,
                 "district": dist_name,
                 "state": state_name,
@@ -120,9 +136,12 @@ async def fetch_live_ogd_mandi_prices(
                 "last_updated": arrival_date,
                 "data_source": "live_ogd_india",
             }
+            _MANDI_CACHE[cache_key] = (result, now, False)
+            return result
 
     except Exception as e:
         logger.warning(f"⚠️ data.gov.in API fetch failed ({e}). Falling back to Agmarknet baseline.")
+        _MANDI_CACHE[cache_key] = (None, now, True)
         return None
 
 
