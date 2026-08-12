@@ -22,7 +22,7 @@ from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from typing import Optional, Dict, Any, List
 
-from fastapi import FastAPI, Query, Depends
+from fastapi import FastAPI, Query, Depends, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
@@ -106,6 +106,21 @@ app.add_middleware(
     expose_headers=["*"],
     max_age=86400,
 )
+
+
+@app.options("/{full_path:path}")
+async def preflight_options_handler(request: Request, full_path: str):
+    """Explicit preflight OPTIONS handler ensuring 200 OK for cross-origin requests."""
+    origin = request.headers.get("origin", "*")
+    return Response(
+        status_code=200,
+        headers={
+            "Access-Control-Allow-Origin": origin if origin != "*" else "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS, PATCH, HEAD",
+            "Access-Control-Allow-Headers": "Authorization, Content-Type, Accept, Origin, User-Agent",
+            "Access-Control-Max-Age": "86400",
+        },
+    )
 
 
 # ---------------------------------------------------------------------------
