@@ -1,0 +1,8 @@
+---
+import AuthLayout from '../layouts/AuthLayout.astro';
+import { LoginForm } from '../components/react/auth/LoginForm';
+---
+
+<AuthLayout title="Sign in | AgroConnect">
+  <LoginForm client:load />
+</AuthLayout>

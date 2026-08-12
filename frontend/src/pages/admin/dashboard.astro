@@ -1,0 +1,49 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { UserVerificationTable } from '../../components/react/admin/UserVerificationTable';
+import { ModerationQueueTable } from '../../components/react/admin/ModerationQueueTable';
+import { AnalyticsDashboardCharts } from '../../components/react/charts/AnalyticsDashboardCharts';
+import { MOCK_ANALYTICS } from '../../lib/mockData';
+---
+
+<AppDashboardLayout
+  title="Admin Dashboard | AgroConnect"
+  activeRole="admin"
+  pageTitle="Platform Control Center"
+  pageSubtitle="User verification, listing moderation, and platform analytics."
+>
+  <div class="space-y-6">
+    <!-- Stats -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white border border-[#ebebeb] rounded-xl p-5">
+        <p class="text-xs text-[#8f8f8f] mb-1">Registered farmers</p>
+        <p class="text-2xl font-semibold text-[#171717]">{MOCK_ANALYTICS.totalFarmers.toLocaleString('en-IN')}</p>
+        <p class="text-xs text-amber-600 mt-0.5">{MOCK_ANALYTICS.pendingVerifications} pending verification</p>
+      </div>
+      <div class="bg-white border border-[#ebebeb] rounded-xl p-5">
+        <p class="text-xs text-[#8f8f8f] mb-1">Registered buyers</p>
+        <p class="text-2xl font-semibold text-[#171717]">{MOCK_ANALYTICS.totalBuyers.toLocaleString('en-IN')}</p>
+        <p class="text-xs text-[#8f8f8f] mt-0.5">Wholesalers &amp; processors</p>
+      </div>
+      <div class="bg-white border border-[#ebebeb] rounded-xl p-5">
+        <p class="text-xs text-[#8f8f8f] mb-1">Moderation queue</p>
+        <p class="text-2xl font-semibold text-[#171717]">{MOCK_ANALYTICS.pendingListings}</p>
+        <p class="text-xs text-amber-600 mt-0.5">Awaiting approval</p>
+      </div>
+      <div class="bg-white border border-[#ebebeb] rounded-xl p-5">
+        <p class="text-xs text-[#8f8f8f] mb-1">Gross trade volume</p>
+        <p class="text-2xl font-semibold text-[#171717]">₹{(MOCK_ANALYTICS.totalTradeVolumeINR / 10000000).toFixed(1)} Cr</p>
+        <p class="text-xs text-emerald-600 mt-0.5">Direct farm trades</p>
+      </div>
+    </div>
+
+    <!-- User verification -->
+    <UserVerificationTable client:load />
+
+    <!-- Moderation queue -->
+    <ModerationQueueTable client:load />
+
+    <!-- Analytics -->
+    <AnalyticsDashboardCharts client:visible />
+  </div>
+</AppDashboardLayout>

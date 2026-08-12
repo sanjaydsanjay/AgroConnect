@@ -1,0 +1,13 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { SmartCropPlanner } from '../../components/react/farmer/SmartCropPlanner';
+---
+
+<AppDashboardLayout
+  title="Smart Crop Planner | AgroConnect"
+  activeRole="farmer"
+  pageTitle="Smart Crop Planner & Weather Intelligence"
+  pageSubtitle="Select your farm location, inspect live weather forecasts, and run AI crop suitability matching."
+>
+  <SmartCropPlanner client:load />
+</AppDashboardLayout>

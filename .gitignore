@@ -1,5 +1,10 @@
+# Environment & local settings
 .env
+.env.local
+.env.*.local
 ai-service/.env
+
+# AI Service & Python
 ai-service/evaluation/streamlit_app.py
 .streamlit/
 __pycache__/
@@ -8,3 +13,21 @@ __pycache__/
 .venv/
 ai-service/.venv/
 
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+.astro/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

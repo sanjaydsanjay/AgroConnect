@@ -1,0 +1,15 @@
+---
+interface Props {
+  elevated?: boolean;
+  class?: string;
+}
+
+const { elevated = false, class: className = '' } = Astro.props;
+const shadowStyle = elevated
+  ? 'shadow-[0_2px_8px_rgba(0,0,0,0.06)] border-[#ebebeb]'
+  : 'border-[#ebebeb] shadow-[0_1px_2px_rgba(0,0,0,0.02)]';
+---
+
+<div class={`bg-white rounded-xl border p-5 transition-all duration-150 ${shadowStyle} ${className}`}>
+  <slot />
+</div>

@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import { ToastContainer } from '../components/react/ui/ToastContainer';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+}
+
+const {
+  title = 'AgroConnect | AI-Powered Farm-to-Market Platform',
+  description = 'AI crop recommendations, weather intelligence, direct produce listings, and buyer marketplace.',
+  lang = 'en',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="h-full scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Google Fonts: Geist & Geist Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <!-- Astro View Transitions -->
+    <ClientRouter />
+  </head>
+  <body class="min-h-full flex flex-col bg-[#fafafa] text-[#171717] selection:bg-[#0070f3] selection:text-white">
+    <!-- Accessible Skip Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-[#0070f3] focus:border focus:border-[#0070f3] focus:rounded-md focus:shadow-md text-xs font-semibold"
+    >
+      Skip to main content
+    </a>
+
+    <slot />
+    <ToastContainer client:load />
+  </body>
+</html>

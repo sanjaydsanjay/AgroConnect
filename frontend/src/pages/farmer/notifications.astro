@@ -1,0 +1,64 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { Bell, CheckCircle2, ShoppingBag, Tag } from 'lucide-react';
+---
+
+<AppDashboardLayout
+  title="Notifications | AgroConnect"
+  activeRole="farmer"
+  pageTitle="Notifications & System Alerts"
+  pageSubtitle="Real-time status updates on buyer inquiries, mandi price alerts, and recommendation reports."
+>
+  <div class="max-w-4xl mx-auto space-y-4">
+    <div class="bg-white border border-[#ebebeb] rounded-xl p-5 shadow-xs flex items-start space-x-4">
+      <div class="w-9 h-9 rounded-full bg-blue-50 text-[#0070f3] flex items-center justify-center shrink-0">
+        <ShoppingBag class="w-4 h-4" />
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center justify-between">
+          <h4 class="text-sm font-bold text-[#171717]">New Buyer Inquiry Received</h4>
+          <span class="text-[10px] font-mono-eyebrow text-[#8f8f8f]">10 mins ago</span>
+        </div>
+        <p class="text-xs text-[#4d4d4d] mt-1">
+          GreenFresh Foods Ltd submitted an order request for 50 Quintals of Fresh Tomato @ ₹3,050/qtl.
+        </p>
+        <a href="/farmer/orders" class="inline-flex items-center text-xs font-semibold text-[#0070f3] hover:underline mt-2">
+          View & Accept Offer →
+        </a>
+      </div>
+    </div>
+
+    <div class="bg-white border border-[#ebebeb] rounded-xl p-5 shadow-xs flex items-start space-x-4">
+      <div class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+        <CheckCircle2 class="w-4 h-4" />
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center justify-between">
+          <h4 class="text-sm font-bold text-[#171717]">Account Verification Approved</h4>
+          <span class="text-[10px] font-mono-eyebrow text-[#8f8f8f]">2 hours ago</span>
+        </div>
+        <p class="text-xs text-[#4d4d4d] mt-1">
+          Your farmer profile for Mandya District has been verified by platform admins. A verified checkmark badge is now visible on your produce listings.
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-white border border-[#ebebeb] rounded-xl p-5 shadow-xs flex items-start space-x-4">
+      <div class="w-9 h-9 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+        <Tag class="w-4 h-4" />
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center justify-between">
+          <h4 class="text-sm font-bold text-[#171717]">Mandi Price Alert: Tomato +14.2%</h4>
+          <span class="text-[10px] font-mono-eyebrow text-[#8f8f8f]">Yesterday</span>
+        </div>
+        <p class="text-xs text-[#4d4d4d] mt-1">
+          Mandya APMC mandi reported a price increase to ₹3,200/quintal due to high Bengaluru urban demand.
+        </p>
+        <a href="/farmer/market" class="inline-flex items-center text-xs font-semibold text-[#0070f3] hover:underline mt-2">
+          Check Price Trends →
+        </a>
+      </div>
+    </div>
+  </div>
+</AppDashboardLayout>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <div class="min-h-screen bg-[#fafafa] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+    <main class="w-full max-w-[420px] mx-auto my-auto">
+      <slot />
+    </main>
+  </div>
+</BaseLayout>

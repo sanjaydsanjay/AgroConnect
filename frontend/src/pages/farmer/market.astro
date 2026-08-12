@@ -1,0 +1,60 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { MarketPriceTrendChart } from '../../components/react/charts/MarketPriceTrendChart';
+import { MOCK_MARKET_PRICES } from '../../lib/mockData';
+import { TrendingUp, ArrowUpRight, ArrowDownRight, Minus } from 'lucide-react';
+---
+
+<AppDashboardLayout
+  title="Market Intelligence & Price Trends | AgroConnect"
+  activeRole="farmer"
+  pageTitle="Market Intelligence & Mandi Prices"
+  pageSubtitle="Real-time APMC mandi prices, price projections, and optimal selling windows."
+>
+  <div class="space-y-8">
+    {/* Chart Component */}
+    <MarketPriceTrendChart client:visible />
+
+    {/* Prices Table */}
+    <div class="bg-white border border-[#ebebeb] rounded-xl overflow-hidden shadow-xs">
+      <div class="p-5 border-b border-[#ebebeb]">
+        <h3 class="text-base font-bold text-[#171717]">Current Regional Mandi Prices</h3>
+        <p class="text-xs text-[#666666]">Updated live from APMC market feeds</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-[#fafafa] border-b border-[#ebebeb] font-mono-eyebrow text-[#666666]">
+            <tr>
+              <th class="px-5 py-3">CROP NAME</th>
+              <th class="px-5 py-3">MANDI / DISTRICT</th>
+              <th class="px-5 py-3">CURRENT PRICE</th>
+              <th class="px-5 py-3">TREND</th>
+              <th class="px-5 py-3">SUGGESTED SELLING WINDOW</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#ebebeb]">
+            {MOCK_MARKET_PRICES.map((mp) => (
+              <tr key={mp.id} class="hover:bg-[#fafafa]/60 transition-colors">
+                <td class="px-5 py-4 font-bold text-[#171717]">{mp.cropName}</td>
+                <td class="px-5 py-4 text-xs text-[#4d4d4d]">{mp.marketName}</td>
+                <td class="px-5 py-4 font-bold text-[#171717]">₹{mp.currentPrice.toLocaleString('en-IN')} / qtl</td>
+                <td class="px-5 py-4">
+                  <span class={`inline-flex items-center space-x-1 text-xs font-semibold px-2 py-0.5 rounded-full ${
+                    mp.trend === 'up' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : mp.trend === 'down' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-gray-50 text-gray-700 border border-gray-200'
+                  }`}>
+                    {mp.trend === 'up' && <ArrowUpRight class="w-3.5 h-3.5" />}
+                    {mp.trend === 'down' && <ArrowDownRight class="w-3.5 h-3.5" />}
+                    {mp.trend === 'stable' && <Minus class="w-3.5 h-3.5" />}
+                    <span>{mp.trend === 'up' ? `+${mp.priceTrendPercentage}%` : `${mp.priceTrendPercentage}%`}</span>
+                  </span>
+                </td>
+                <td class="px-5 py-4 text-xs font-medium text-[#0070f3]">{mp.suggestedSellingWindow}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</AppDashboardLayout>

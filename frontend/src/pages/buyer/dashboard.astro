@@ -1,0 +1,75 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import SquareButton from '../../components/astro/SquareButton.astro';
+import { MOCK_LISTINGS, MOCK_ORDERS } from '../../lib/mockData';
+import { ShoppingCart, ArrowRight } from 'lucide-react';
+---
+
+<AppDashboardLayout
+  title="Buyer Dashboard | AgroConnect"
+  activeRole="buyer"
+  pageTitle="Dashboard"
+  pageSubtitle="Procure verified produce and track your orders."
+>
+  <div slot="header-actions">
+    <SquareButton href="/buyer/marketplace" variant="primary">
+      <ShoppingCart class="w-3.5 h-3.5" />
+      <span>Browse Marketplace</span>
+    </SquareButton>
+  </div>
+
+  <div class="space-y-6">
+    <!-- Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white border border-[#ebebeb] rounded-xl p-5">
+        <p class="text-xs text-[#8f8f8f] mb-1">Available listings</p>
+        <p class="text-lg font-semibold text-[#171717]">{MOCK_LISTINGS.length}</p>
+        <p class="text-xs text-[#0070f3] mt-0.5">Grade A &amp; Export quality</p>
+      </div>
+      <div class="bg-white border border-[#ebebeb] rounded-xl p-5">
+        <p class="text-xs text-[#8f8f8f] mb-1">My submitted orders</p>
+        <p class="text-lg font-semibold text-[#171717]">{MOCK_ORDERS.length}</p>
+        <p class="text-xs text-amber-600 mt-0.5">Pending farmer response</p>
+      </div>
+      <div class="bg-white border border-[#ebebeb] rounded-xl p-5">
+        <p class="text-xs text-[#8f8f8f] mb-1">Verified farmers</p>
+        <p class="text-lg font-semibold text-[#171717]">1,248</p>
+        <p class="text-xs text-emerald-600 mt-0.5">Mandya, Dharwad, Belagavi</p>
+      </div>
+    </div>
+
+    <!-- Featured listings -->
+    <div class="bg-white border border-[#ebebeb] rounded-xl p-6">
+      <div class="flex items-center justify-between mb-5">
+        <div>
+          <h3 class="text-sm font-semibold text-[#171717]">Featured produce</h3>
+          <p class="text-xs text-[#8f8f8f] mt-0.5">Direct from verified farms</p>
+        </div>
+        <SquareButton href="/buyer/marketplace" variant="ghost" size="sm">
+          <span>View all</span>
+          <ArrowRight class="w-3.5 h-3.5" />
+        </SquareButton>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {MOCK_LISTINGS.slice(0, 3).map((lst) => (
+          <div class="border border-[#ebebeb] rounded-xl p-4 hover:border-[#171717] transition-colors duration-150">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs text-[#8f8f8f]">{lst.qualityGrade}</span>
+              <span class={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                lst.status === 'Active' ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'
+              }`}>{lst.status}</span>
+            </div>
+            <h4 class="text-sm font-semibold text-[#171717] mb-1">{lst.cropName}</h4>
+            <p class="text-xs text-[#8f8f8f] mb-3">{lst.farmerName} · {lst.farmerDistrict}</p>
+            <p class="text-sm font-semibold text-[#171717]">
+              ₹{lst.askingPrice.toLocaleString('en-IN')}
+              <span class="text-xs font-normal text-[#8f8f8f]"> / qtl</span>
+            </p>
+            <p class="text-xs text-[#8f8f8f] mt-0.5">{lst.quantity} quintals available</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</AppDashboardLayout>

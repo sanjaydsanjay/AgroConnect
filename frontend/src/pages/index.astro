@@ -1,0 +1,199 @@
+---
+import PublicLayout from '../layouts/PublicLayout.astro';
+import PillButton from '../components/astro/PillButton.astro';
+import { SuitabilityScoreBadge } from '../components/react/ui/SuitabilityScoreBadge';
+import { MOCK_RECOMMENDATIONS, MOCK_MARKET_PRICES } from '../lib/mockData';
+import { ArrowRight, Cpu, ShoppingCart, ShieldCheck, TrendingUp, TrendingDown, Minus } from 'lucide-react';
+---
+
+<PublicLayout title="AgroConnect — AI-Powered Farm-to-Market">
+
+  <!-- ── Hero ──────────────────────────────────────────────────── -->
+  <section class="hero-gradient border-b border-[#ebebeb]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <div class="max-w-2xl">
+        <p class="font-mono text-xs text-[#8f8f8f] uppercase tracking-wider mb-4">
+          AI-Powered Agriculture Platform
+        </p>
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl font-semibold text-[#171717] mb-6 leading-tight"
+          style="letter-spacing:-0.04em"
+        >
+          Smarter crops.<br />
+          Direct market access.
+        </h1>
+        <p class="text-base text-[#4d4d4d] mb-8 leading-relaxed max-w-lg">
+          AgroConnect uses live soil, Open-Meteo weather, and mandi data to tell farmers exactly
+          what to grow — then connects them directly to verified buyers.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <PillButton href="/farmer/crop-planner" variant="primary">
+            <Cpu class="w-4 h-4" />
+            <span>Smart Crop Planner</span>
+            <ArrowRight class="w-4 h-4" />
+          </PillButton>
+          <PillButton href="/buyer/marketplace" variant="secondary">
+            <ShoppingCart class="w-4 h-4" />
+            <span>Browse Marketplace</span>
+          </PillButton>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Platform numbers ────────────────────────────────────── -->
+  <section class="border-b border-[#ebebeb] bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div>
+        <div class="text-2xl font-semibold text-[#171717]" style="letter-spacing:-0.03em">
+          1,420+
+        </div>
+        <div class="text-sm text-[#8f8f8f] mt-1">Registered Farmers</div>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold text-[#171717]" style="letter-spacing:-0.03em">
+          380+
+        </div>
+        <div class="text-sm text-[#8f8f8f] mt-1">Verified Buyers</div>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold text-[#171717]" style="letter-spacing:-0.03em">
+          ₹2.4Cr+
+        </div>
+        <div class="text-sm text-[#8f8f8f] mt-1">Trade Volume Facilitated</div>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold text-[#171717]" style="letter-spacing:-0.03em">
+          250+
+        </div>
+        <div class="text-sm text-[#8f8f8f] mt-1">Active Crop Listings</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it works ────────────────────────────────────────── -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="mb-10">
+      <p class="font-mono text-xs text-[#8f8f8f] uppercase tracking-wider mb-2">How it works</p>
+      <h2 class="text-2xl font-semibold text-[#171717]" style="letter-spacing:-0.03em">
+        From soil data to sale — in three steps
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {[
+        {
+          n: '01',
+          title: 'Select farm location',
+          body: 'Use our Leaflet map or GPS to pinpoint your farm location. Live weather and season are fetched automatically.',
+        },
+        {
+          n: '02',
+          title: 'Get AI crop rankings',
+          body: 'Our model scores top 3 crops using Open-Meteo weather, soil compatibility, and mandi market demand data.',
+        },
+        {
+          n: '03',
+          title: 'List and sell directly',
+          body: 'Publish your produce directly to verified buyers with zero middleman commissions.',
+        },
+      ].map(({ n, title, body }) => (
+        <div class="bg-white border border-[#ebebeb] rounded-xl p-6">
+          <span class="font-mono text-xs text-[#8f8f8f]">{n}</span>
+          <h3 class="text-base font-semibold text-[#171717] mt-3 mb-2">{title}</h3>
+          <p class="text-sm text-[#4d4d4d] leading-relaxed">{body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Sample AI rankings ──────────────────────────────────── -->
+  <section class="border-t border-[#ebebeb] py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <p class="font-mono text-xs text-[#8f8f8f] uppercase tracking-wider mb-2">Smart Crop Planner</p>
+          <h2 class="text-2xl font-semibold text-[#171717]" style="letter-spacing:-0.03em">
+            Top crops for Mandya, Karnataka
+          </h2>
+          <p class="text-sm text-[#8f8f8f] mt-1">Kharif season · Loam soil · Drip irrigation</p>
+        </div>
+        <a
+          href="/farmer/crop-planner"
+          class="hidden md:flex items-center gap-1.5 text-sm text-[#0070f3] hover:underline"
+        >
+          Open Smart Crop Planner <ArrowRight class="w-3.5 h-3.5" />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {MOCK_RECOMMENDATIONS.map((rec, i) => (
+          <div class="border border-[#ebebeb] rounded-xl p-5 hover:border-[#171717] transition-colors duration-150">
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-xs text-[#8f8f8f]">#{i + 1}</span>
+              <SuitabilityScoreBadge score={rec.suitabilityScore} showMeter={false} />
+            </div>
+            <h3 class="text-base font-semibold text-[#171717] mb-1">{rec.cropName}</h3>
+            <p class="text-xs text-[#8f8f8f] mb-3">{rec.category} · {rec.growingPeriodDays} days</p>
+            <div class="text-sm font-semibold text-[#171717] mb-3">
+              ₹{rec.profitMin.toLocaleString('en-IN')} –
+              ₹{rec.profitMax.toLocaleString('en-IN')}
+              <span class="font-normal text-[#8f8f8f]"> /acre</span>
+            </div>
+            <ul class="space-y-1.5">
+              {rec.reasoning.slice(0, 2).map((r) => (
+                <li class="flex items-start gap-1.5 text-xs text-[#4d4d4d]">
+                  <ShieldCheck class="w-3.5 h-3.5 text-[#0070f3] mt-0.5 shrink-0" />
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Market prices strip ─────────────────────────────────── -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <p class="font-mono text-xs text-[#8f8f8f] uppercase tracking-wider mb-2">Mandi prices</p>
+        <h2 class="text-2xl font-semibold text-[#171717]" style="letter-spacing:-0.03em">Live market rates</h2>
+      </div>
+      <a href="/farmer/market" class="hidden md:flex items-center gap-1.5 text-sm text-[#0070f3] hover:underline">
+        View all <ArrowRight class="w-3.5 h-3.5" />
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      {MOCK_MARKET_PRICES.map((mp) => (
+        <div class="bg-white border border-[#ebebeb] rounded-xl p-4 hover:border-[#171717] transition-colors duration-150">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-semibold text-[#171717]">{mp.cropName}</span>
+            <span class="text-xs text-[#8f8f8f]">{mp.district}</span>
+          </div>
+          <div class="text-xl font-semibold text-[#171717]" style="letter-spacing:-0.02em">
+            ₹{mp.currentPrice.toLocaleString('en-IN')}
+            <span class="text-xs font-normal text-[#8f8f8f] ml-1">/ qtl</span>
+          </div>
+          <div class={`flex items-center gap-1 mt-2 text-xs font-medium ${
+            mp.trend === 'up' ? 'text-emerald-600' : mp.trend === 'down' ? 'text-red-500' : 'text-[#8f8f8f]'
+          }`}>
+            {mp.trend === 'up'
+              ? <TrendingUp class="w-3.5 h-3.5" />
+              : mp.trend === 'down'
+              ? <TrendingDown class="w-3.5 h-3.5" />
+              : <Minus class="w-3.5 h-3.5" />
+            }
+            <span>
+              {mp.trend === 'stable' ? 'Stable' : `${mp.trend === 'up' ? '+' : ''}${mp.priceTrendPercentage}%`}
+            </span>
+            <span class="text-[#8f8f8f] font-normal ml-1">{mp.demandIndicator}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</PublicLayout>

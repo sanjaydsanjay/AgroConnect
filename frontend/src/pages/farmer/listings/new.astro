@@ -1,0 +1,13 @@
+---
+import AppDashboardLayout from '../../../layouts/AppDashboardLayout.astro';
+import { CreateListingForm } from '../../../components/react/farmer/CreateListingForm';
+---
+
+<AppDashboardLayout
+  title="Create Crop Listing | AgroConnect"
+  activeRole="farmer"
+  pageTitle="Post New Produce Listing"
+  pageSubtitle="Publish your crop quantity, quality grade, asking price, and harvest availability."
+>
+  <CreateListingForm client:load />
+</AppDashboardLayout>

@@ -1,0 +1,13 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { BuyerOrdersTable } from '../../components/react/buyer/BuyerOrdersTable';
+---
+
+<AppDashboardLayout
+  title="My Orders | AgroConnect"
+  activeRole="buyer"
+  pageTitle="My Procurement Orders & Inquiries"
+  pageSubtitle="Track submitted order requests, farmer responses, and delivery scheduling."
+>
+  <BuyerOrdersTable client:load />
+</AppDashboardLayout>

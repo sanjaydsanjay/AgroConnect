@@ -1,0 +1,31 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { Navbar } from '../components/react/nav/Navbar';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <Navbar client:load />
+  <main class="flex-1 pt-14">
+    <slot />
+  </main>
+
+  <footer class="border-t border-[#ebebeb] bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-5 text-sm text-[#8f8f8f]">
+      <div class="flex items-center gap-2">
+        <span class="font-semibold text-[#171717]">AgroConnect</span>
+        <span>— AI-powered farm-to-market platform</span>
+      </div>
+      <nav class="flex items-center gap-6">
+        <a href="/farmer/crop-planner" class="hover:text-[#171717] transition-colors">Smart Crop Planner</a>
+        <a href="/buyer/marketplace" class="hover:text-[#171717] transition-colors">Marketplace</a>
+        <a href="/admin/dashboard" class="hover:text-[#171717] transition-colors">Admin</a>
+      </nav>
+    </div>
+  </footer>
+</BaseLayout>

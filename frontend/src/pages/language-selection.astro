@@ -1,0 +1,8 @@
+---
+import AuthLayout from '../layouts/AuthLayout.astro';
+import { LanguageSelection } from '../components/react/auth/LanguageSelection';
+---
+
+<AuthLayout title="Choose Your Language | AgroConnect">
+  <LanguageSelection client:load />
+</AuthLayout>

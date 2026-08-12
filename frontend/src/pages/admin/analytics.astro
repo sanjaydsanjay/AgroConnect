@@ -1,0 +1,17 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { AnalyticsDashboardCharts } from '../../components/react/charts/AnalyticsDashboardCharts';
+import { MarketPriceTrendChart } from '../../components/react/charts/MarketPriceTrendChart';
+---
+
+<AppDashboardLayout
+  title="Platform Analytics | AgroConnect"
+  activeRole="admin"
+  pageTitle="Platform Market Analytics"
+  pageSubtitle="Supply-demand gap metrics, top demanded crops, and gross volume trends."
+>
+  <div class="space-y-8">
+    <AnalyticsDashboardCharts client:visible />
+    <MarketPriceTrendChart client:visible />
+  </div>
+</AppDashboardLayout>

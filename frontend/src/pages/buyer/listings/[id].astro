@@ -1,0 +1,87 @@
+---
+import AppDashboardLayout from '../../../layouts/AppDashboardLayout.astro';
+import { VerificationBadge } from '../../../components/react/ui/VerificationBadge';
+import SquareButton from '../../../components/astro/SquareButton.astro';
+import { MOCK_LISTINGS } from '../../../lib/mockData';
+import { MapPin, Calendar, ShoppingCart, User, ArrowLeft, ShieldCheck } from 'lucide-react';
+
+export async function getStaticPaths() {
+  return MOCK_LISTINGS.map((listing) => ({
+    params: { id: listing.id },
+    props: { listing },
+  }));
+}
+
+const { listing } = Astro.props;
+---
+
+<AppDashboardLayout
+  title={`${listing.cropName} Details | AgroConnect`}
+  activeRole="buyer"
+  pageTitle={listing.cropName}
+  pageSubtitle={`Sourced from ${listing.farmerName} in ${listing.farmerDistrict} District.`}
+>
+  <div slot="header-actions">
+    <SquareButton href="/buyer/marketplace" variant="ghost">
+      <ArrowLeft class="w-4 h-4 mr-1" />
+      <span>Back to Marketplace</span>
+    </SquareButton>
+  </div>
+
+  <div class="max-w-4xl mx-auto space-y-6">
+    <div class="bg-white border border-[#ebebeb] rounded-xl p-8 shadow-xs">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#ebebeb]">
+        <div>
+          <div class="flex items-center space-x-2 mb-2">
+            <span class="text-xs font-mono-eyebrow bg-[#fafafa] border border-[#ebebeb] text-[#4d4d4d] px-2.5 py-1 rounded-md">
+              {listing.qualityGrade}
+            </span>
+            {listing.farmerVerified && <VerificationBadge label="Verified Farmer Listing" />}
+          </div>
+          <h2 class="text-2xl font-bold text-[#171717]">{listing.cropName}</h2>
+          <p class="text-xs text-[#8f8f8f]">{listing.category}</p>
+        </div>
+
+        <div class="bg-[#fafafa] border border-[#ebebeb] p-4 rounded-xl text-right">
+          <span class="text-[10px] font-mono-eyebrow text-[#8f8f8f] block">ASKING PRICE</span>
+          <span class="text-2xl font-extrabold text-[#171717]">₹{listing.askingPrice.toLocaleString('en-IN')}</span>
+          <span class="text-xs text-[#8f8f8f] font-normal"> / quintal</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-6 border-b border-[#ebebeb]">
+        <div>
+          <span class="text-[10px] font-mono-eyebrow text-[#8f8f8f] block mb-1">AVAILABLE QUANTITY</span>
+          <span class="text-base font-bold text-[#171717]">{listing.quantity} Quintals</span>
+        </div>
+        <div>
+          <span class="text-[10px] font-mono-eyebrow text-[#8f8f8f] block mb-1">HARVEST AVAILABILITY</span>
+          <span class="text-base font-bold text-[#171717]">{listing.harvestDate}</span>
+        </div>
+        <div>
+          <span class="text-[10px] font-mono-eyebrow text-[#8f8f8f] block mb-1">FARM LOCATION</span>
+          <span class="text-base font-bold text-[#171717]">{listing.farmerDistrict} District</span>
+        </div>
+      </div>
+
+      <div class="py-6">
+        <h4 class="text-xs font-mono-eyebrow text-[#8f8f8f] uppercase tracking-wider mb-2">PRODUCE SPECIFICATIONS</h4>
+        <p class="text-sm text-[#4d4d4d] leading-relaxed">
+          {listing.description}
+        </p>
+      </div>
+
+      <div class="pt-6 border-t border-[#ebebeb] flex items-center justify-between">
+        <div class="flex items-center space-x-2 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg">
+          <ShieldCheck class="w-4 h-4" />
+          <span>Quality verified under AgroConnect mandi inspection standards</span>
+        </div>
+
+        <SquareButton href="/buyer/marketplace" variant="primary" size="lg">
+          <ShoppingCart class="w-4 h-4 mr-2" />
+          <span>Submit Order Request</span>
+        </SquareButton>
+      </div>
+    </div>
+  </div>
+</AppDashboardLayout>

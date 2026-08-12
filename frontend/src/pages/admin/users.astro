@@ -1,0 +1,13 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { UserVerificationTable } from '../../components/react/admin/UserVerificationTable';
+---
+
+<AppDashboardLayout
+  title="User Verifications | AgroConnect"
+  activeRole="admin"
+  pageTitle="User Identity & Verification Management"
+  pageSubtitle="Moderate registered farmers and commercial buyers to maintain platform trust."
+>
+  <UserVerificationTable client:load />
+</AppDashboardLayout>

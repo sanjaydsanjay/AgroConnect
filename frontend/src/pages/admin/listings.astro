@@ -1,0 +1,13 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { ModerationQueueTable } from '../../components/react/admin/ModerationQueueTable';
+---
+
+<AppDashboardLayout
+  title="Listing Moderation Queue | AgroConnect"
+  activeRole="admin"
+  pageTitle="Crop Listing Moderation Queue"
+  pageSubtitle="Review quality, pricing, and specs of produce listings before public marketplace publication."
+>
+  <ModerationQueueTable client:load />
+</AppDashboardLayout>

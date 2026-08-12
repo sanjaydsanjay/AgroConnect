@@ -1,0 +1,17 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { MarketplaceFilter } from '../../components/react/buyer/MarketplaceFilter';
+import { MarketplaceGrid } from '../../components/react/buyer/MarketplaceGrid';
+---
+
+<AppDashboardLayout
+  title="Produce Marketplace | AgroConnect"
+  activeRole="buyer"
+  pageTitle="Verified Produce Sourcing Marketplace"
+  pageSubtitle="Search, filter, inspect produce specs, and submit order inquiries directly to verified farmers."
+>
+  <div class="space-y-6">
+    <MarketplaceFilter client:load />
+    <MarketplaceGrid client:load />
+  </div>
+</AppDashboardLayout>

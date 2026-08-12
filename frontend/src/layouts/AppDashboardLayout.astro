@@ -1,0 +1,41 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { Navbar } from '../components/react/nav/Navbar';
+
+interface Props {
+  title?: string;
+  activeRole?: 'farmer' | 'buyer' | 'admin';
+  pageTitle: string;
+  pageSubtitle?: string;
+}
+
+const { title, activeRole = 'farmer', pageTitle, pageSubtitle } = Astro.props;
+---
+
+<BaseLayout title={title || `${pageTitle} | AgroConnect`}>
+  <header>
+    <Navbar client:load />
+  </header>
+
+  <!-- Main layout container with navbar offset (pt-14 = 56px) -->
+  <main id="main-content" tabindex="-1" class="min-h-screen bg-[#fafafa] pt-14 focus:outline-none">
+    <!-- Page header -->
+    <div class="bg-white border-b border-[#ebebeb]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div>
+          <p class="font-mono-eyebrow mb-0.5">{activeRole} Portal</p>
+          <h1 class="text-xl font-semibold text-[#171717]" style="letter-spacing:-0.03em">{pageTitle}</h1>
+          {pageSubtitle && <p class="text-xs text-[#666666] mt-0.5">{pageSubtitle}</p>}
+        </div>
+        <div class="flex items-center gap-2">
+          <slot name="header-actions" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <slot />
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,8 @@
+---
+import AuthLayout from '../layouts/AuthLayout.astro';
+import { RegisterForm } from '../components/react/auth/RegisterForm';
+---
+
+<AuthLayout title="Create Account | AgroConnect">
+  <RegisterForm client:load />
+</AuthLayout>

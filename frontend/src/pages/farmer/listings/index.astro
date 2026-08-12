@@ -1,0 +1,13 @@
+---
+import AppDashboardLayout from '../../../layouts/AppDashboardLayout.astro';
+import { FarmerListingsView } from '../../../components/react/farmer/FarmerListingsView';
+---
+
+<AppDashboardLayout
+  title="My Crop Listings | AgroConnect"
+  activeRole="farmer"
+  pageTitle="My Posted Crop Listings"
+  pageSubtitle="Manage produce listed for sale on the buyer marketplace."
+>
+  <FarmerListingsView client:load />
+</AppDashboardLayout>

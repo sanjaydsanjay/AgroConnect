@@ -1,0 +1,13 @@
+---
+import AppDashboardLayout from '../../layouts/AppDashboardLayout.astro';
+import { FarmerDirectoryView } from '../../components/react/buyer/FarmerDirectoryView';
+---
+
+<AppDashboardLayout
+  title="Verified Farmers Directory | AgroConnect"
+  activeRole="buyer"
+  pageTitle="Verified Farmer Directory"
+  pageSubtitle="Direct contact directory of verified local farmers across Karnataka districts."
+>
+  <FarmerDirectoryView client:load />
+</AppDashboardLayout>

@@ -1,0 +1,12 @@
+---
+import AppDashboardLayout from '../layouts/AppDashboardLayout.astro';
+import { UserProfile } from '../components/react/profile/UserProfile';
+---
+
+<AppDashboardLayout
+  title="My Profile | AgroConnect"
+  pageTitle="User Profile"
+  pageSubtitle="Manage your account profile information and preferences."
+>
+  <UserProfile client:load />
+</AppDashboardLayout>
